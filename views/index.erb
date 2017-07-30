@@ -1,10 +1,81 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-	<meta charset="UTF-8">
-	<title>タイトル</title>
-</head>
-<body>
+<!--<div class="container panel panel-default">-->
+<!--	<div>-->
+<!--		<div>-->
+<!--			<table class="table">-->
+<!--				<thread>-->
+<!--					<tr>-->
+<!--						<th>書名</th>-->
+<!--						<th>読了日</th>-->
+<!--						<th>評価</th>-->
+<!--						<th>コメント</th>-->
+<!--						<th>削除</th>-->
+<!--					</tr>-->
+<!--				</thread>-->
+<!--				<tbody>-->
+<!--					<% @books.each do |book| %>-->
+<!--						<tr>-->
+<!--							<td><%= CGI.escapeHTML(book.title) %></td>-->
+<!--							<td><%= book.date %></td>-->
+<!--							<td><%= book.rate %></td>-->
+<!--							<td><%= book.comment %></td>-->
+<!--							<td>-->
+<!--								<form action="/books/<%= book.id %>/delete" method="post">-->
+<!--									<input type="submit" value="削除">-->
+<!--								</form>-->
+<!--							</td>-->
+<!--						</tr>-->
+<!--					<% end %>-->
+<!--					<tr><td colspan="6"><a href="/books/new">新たに読んだ本</a></td></tr>-->
+<!--				</tbody>-->
+<!--			</table>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</div>-->
 
-</body>
-</html>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3">
+			<ul class="list-group">
+				<li class="list-group-item font-white" style="background-color:black">カテゴリー</li>
+				<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
+				<% @lists.each do |list| %>
+					<li class="list-group-item"><a href="/list/<%= list.id %>" class="sentence"><%= list.name %></a></li>
+				<% end %>
+				<!--<li class="list-group-item"><a href="/lists/new" class="sentence">新規カテゴリー</a></li>-->
+			</ul>
+		</div>
+		<div class="col-lg-3"></div>
+		<div class="col-lg-9">	
+			<div class="panel panel-default">
+				<div class="panel-heading" style="background-color:black">
+					<h4 class="font-white">投稿一覧</h4>
+				</div>
+				<% @books.each do |book| %>
+			    <div class="panel-body">
+			    	<h3><%= CGI.escapeHTML(book.title) %><br>
+			    	<small class="sentence text-muted">著:<%= CGI.escapeHTML(book.author) %></small></h3>
+			    	<p class="sentence">読了日:<%= book.date %></p>
+			    	<p class="sentence">評価:<span style="color: yellow; font-size: 20px;"><%= '★' * book.rate %></span></p>
+					<p class="sentence">お気に入り:<a href="/books/<%= book.id %>/star" style="
+					<% if book.star %>
+					color:red;
+					<% else %>
+					color:#848484;
+					<% end %>
+					">★</a></p>
+			    	<p class="sentence">コメント:<br>
+			    	<%= CGI.escapeHTML(book.comment) %></p>
+			    	<div class="">
+						<a href="/books/<%= book.id %>/delete" class="btn font-white back-gray" role="button" aria-pressed="true">削除</a>
+						<a href="/books/<%= book.id %>/edit" class="btn back-black font-white" role="button" aria-pressed="true">編集</a>
+			    	</div>
+			    </div>
+			    <hr>
+			    <% end %>
+			    <div class="panel-body">
+			    	<h4><a href="/books/new" class="btn back-black font-white" role="button">新たに読んだ本</a></h4>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>

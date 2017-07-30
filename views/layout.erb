@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>ブックマネージャー（仮）</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--<link rel="icon" href="favicon.png" type="image/png">-->
+    <meta name="description" content="">
+    <meta name="author" content="coreshin">
+    <link rel="stylesheet" href="/assets/css/book.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body background="../img/dark-wood.jpg">
+    <nav class="navbar navbar-default" style="background-image: url(../img/library.jpg);">
+        <div class="container">
+            <div class="page-header">
+                <a href="/"><img src="../img/logo.png" width="50%" heigth="50%"></a>
+            </div>
+            <p class=" nav navbar-nav navbar-left font-white lead" style="font-family: serif;">あなたのための、読書記録（仮）</p>
+            <ul class="nav navbar-nav navbar-right"><h4>
+            <% if !current_user.nil? %>
+                <li class="font-white">こんにちは<%= current_user.name %>さん</li>
+                <li><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></li>
+            <% else %>
+                <li class="font-white">新規ユーザーですか？</li>
+                <span>
+                    <a href="/signin" class="btn back-black font-white" role="button" aria-pressed="true">ログイン</a>
+                    <a href="/signup" class="btn back-gray font-white" role="button" aria-pressed="true">新規登録</a>
+                </span>
+            <% end %>
+            </h4></ul>
+        </div>
+    </nav>
+    <%= yield %>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.font-black{
+    color: black;
+}
+
+.font-white{
+    color: white;
+}
+
+.back-black{
+    background-color: #000000;
+}
+
+.back-white{
+    background-color: white;
+}
+
+.back-gray{
+    background-color: #AAAAAA;
+}
+
+.back-opacity{
+    filter:alpha(opacity=50);
+    opacity: 0.5;
+}
+
+.sentence{
+    color: black;
+    font-family: serif;
+    font-size: 18px
+}
