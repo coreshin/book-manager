@@ -1,1 +1,1 @@
-List.create([{name: "マンガ"}])
+List.create([{name: "小説"},{name: "ノンフィクション"},{name: "マンガ"},{name: "ライトノベル"}])
