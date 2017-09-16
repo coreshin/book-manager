@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
     validates :password,
         length: { in: 5..10 }
     has_many :books
+    has_many :lists
 end
 
 class Book < ActiveRecord::Base
@@ -27,5 +28,7 @@ class Book < ActiveRecord::Base
 end
 
 class List < ActiveRecord::Base
+    scope :had_by, -> (user) { where(user_id: user.id) }
     has_many :books
+    belongs_to :user
 end

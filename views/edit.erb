@@ -10,7 +10,7 @@
                     <textarea class="form-control" name="comment" placeholder="コメント"><%= CGI.escapeHTML(@book.comment) %></textarea>
                 </div>
                  ジャンル:<select class="form-control" name="list">
-                    <% List.all.each do |list| %>
+                    <% @list.each do |list| %>
                         <option value="<%= list.id %>">
                             <% if list.id == @book.list.id %>
                                 ✔

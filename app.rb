@@ -20,13 +20,15 @@ before '/books' do
 end
 
 get '/' do
-    @lists = List.all
     if current_user.nil?
         @books = Book.none
-    elsif params[:list].nil? then
-        @books = current_user.books
+        @lists = List.none
+    # elsif params[:list].nil? then
+    #     @books = current_user.books
+        # @lists = List.none
     else
-        @books = List.find([:list]).books.had_by(current_user)
+        @books = Book.had_by(current_user)
+        @lists = List.had_by(current_user)
     end
     erb :index
 end
@@ -71,13 +73,12 @@ get '/books/new' do
 end
 
 post '/books' do
-    date = params[:date].split('-')
     list = List.find(params[:list])
-    if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
+    if Date.valid_date?(params[:year].to_i, params[:month].to_i, params[:day].to_i)
         current_user.books.create(
             title: params[:title],
             author: params[:author],
-            date: Date.parse(params[:date]),
+            date: Date.parse(params[:year]+"-"+params[:month]+"-"+params[:day]),
             rate: params[:rate],
             comment: params[:comment],
             list_id: list.id
@@ -103,6 +104,7 @@ end
 
 get '/books/:id/edit' do
     @book = Book.find(params[:id])
+    @list = List.had_by(current_user)
     erb :edit
 end
 
@@ -132,21 +134,19 @@ get '/books/star' do
 end
 
 get '/list/:id' do
-    # ここのルーティングがわかりません
     @lists = List.all
     list = List.find(params[:id])
     @books = list.books.had_by(current_user)
-    # @books = current_user.books.where(list_id: [:id])
     erb :index
 end
 
-# get '/lists/new' do
-#     erb :new_list
-# end
+get '/lists/new' do
+    erb :new_list
+end
 
-# post '/lists' do
-#     List.create(
-#         name: params[:name]
-#     )
-#     redirect '/'
-# end
+post '/lists' do
+    current_user.lists.create(
+        name: params[:name]
+    )
+    redirect '/'
+end
