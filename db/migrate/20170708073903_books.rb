@@ -6,6 +6,7 @@ class Books < ActiveRecord::Migration[5.1]
       t.string :author
       t.boolean :star
       t.date :date
+      t.text :comment
       t.integer :rate
       t.timestamps  null: false
     end
