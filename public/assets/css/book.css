@@ -1,32 +1,154 @@
-.font-black{
-    color: black;
+.font-black{color: black;}
+.font-white{color: white;}
+.back-black{background-color: #000000;}
+.back-white{background-color: white;}
+.back-gray{background-color: #AAAAAA;}
+.back-blue{background-color: #0275d8;}
+.back-opacity{filter:alpha(opacity=50); opacity: 0.5;}
+
+.btn-outline-dark{
+    transition-property: background-color,color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+    color: #343a40;
+    background-color: transparent;
+    background-image: none;
+    border-color: #343a40 !important;
+}
+.btn-outline-dark:hover{
+    background-color: black;
+    color: white !important;
 }
 
-.font-white{
-    color: white;
-}
-
-.back-black{
-    background-color: #000000;
-}
-
-.back-white{
-    background-color: white;
-}
-
-.back-gray{
-    background-color: #AAAAAA;
-}
-
-.back-opacity{
-    filter:alpha(opacity=50);
-    opacity: 0.5;
+.serif{
+    font-family: serif;
 }
 
 .sentence{
     color: black;
     font-family: serif;
-    font-size: 18px
+    font-size: 18px;
+}
+
+.description {
+    font-family: sans-serif;
+    color: grey;
+}
+
+li.list-group-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+i.list-delete{
+    transition-property: opacity,color;
+    transition-duration: 0.35s;
+    transition-timing-function: ease-in-out;
+    opacity: 0.5;
+    font-size: 25px;
+}
+
+.list-delete:hover{
+    color: red;
+    opacity: 1;
+}
+
+.post{
+    border-bottom: 0.5px #D8D8D8 solid;
+}
+
+.post-button{
+    position: absolute;
+    right: 30px;
+    width: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 0;
+}
+
+.post:hover .post-button{
+    opacity: 1;
+}
+
+.book-delete, .book-edit{
+    transition-property: opacity,color;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-in-out;
+    color: black;
+    opacity: 0.5;
+    font-size: 25px;
+}
+
+.book-delete:hover{
+    color: red;
+    opacity: 1;
+}
+
+.book-edit:hover{
+    color: black;
+    opacity: 1
+}
+
+.rate{
+    display: flex;
+    align-items: center;
+}
+
+
+
+textarea[name="comment"].comment{
+    width: 100%;
+    height: 210px;
+}
+
+.input-range[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: #c7c7c7;
+  height: 2px;
+  width: 80%;
+}
+
+ .input-range[type="range"]:focus,
+ .input-range[type="range"]:active {
+     outline: none;
+}
+
+.input-range[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    border: none;
+    width: 12px;
+    height: 12px;
+    display: block;
+    background-color: #262626;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+}
+
+select[name="year"].year{
+    width: 100%
+}
+
+select[name="month"].month{
+    width: 100%
+}
+
+select[name="day"].day{
+    width: 100%
+}
+
+.form-group label{
+    margin-right: 10px;
+}
+
+.rate .description{
+    margin: 0 10px;
 }
 
 @media screen and (max-width: 480px) {

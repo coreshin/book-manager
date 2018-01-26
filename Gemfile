@@ -8,6 +8,7 @@ gem 'rake'
 gem 'sinatra-activerecord'
 
 gem 'bcrypt'
+gem 'slim'
 
 group :development do
    gem 'sqlite3'

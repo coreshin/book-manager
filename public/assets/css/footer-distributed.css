@@ -1,3 +1,7 @@
+.footer-spacing{
+	margin-top: 200px;
+}
+
 .footer-distributed{
 	background-color: #292c2f;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
@@ -8,7 +12,7 @@
 
 	bottom: 0;
 	padding: 45px 50px;
-	margin-top: 200px;
+	/*margin-top: 200px;*/
 }
 
 .footer-distributed .footer-left p{
@@ -53,6 +57,14 @@
 	line-height: 35px;
 
 	margin-left: 3px;
+}
+
+.footer-right-up p{
+	font-size: 20px;
+	color: #ffffff;
+	text-align: center;
+	line-height: 35px;
+	letter-spacing: 1.5px;
 }
 
 /* If you don't want the footer to be responsive, remove these media queries */

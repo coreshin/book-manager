@@ -1,28 +1,41 @@
 <div class="container">
-    <form action="/books/<%= @book.id %>" method="post">
-        <div class="controls">
-            <div class="form-group">
-                <input class="form-control" type="text" name="title" placeholder="書名" value="<%= CGI.escapeHTML(@book.title) %>"><br>
-                <input class="form-control" type="text" name="author" placeholder="著者名" value="<%= CGI.escapeHTML(@book.author) %>"><br>
-                <input class="form-control" type="text" name="date" placeholder="読了日" value="<%= @book.date %>"><br>
-                <input class="form-control" type="text" name="rate" placeholder="評価(1~5)" value="<%= @book.rate %>"><br>
-                <div class="form-group">
-                    <textarea class="form-control" name="comment" placeholder="コメント"><%= CGI.escapeHTML(@book.comment) %></textarea>
-                </div>
-                 ジャンル:<select class="form-control" name="list">
-                    <% @list.each do |list| %>
-                        <option value="<%= list.id %>">
-                            <% if list.id == @book.list.id %>
-                                ✔
+    <div class="panel panel-default">
+    	<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
+    	    <h4 class="font-white">編集</h4>
+    	</div>
+    	<div class="panel-body">
+    	    <form action="/books/<%= @book.id %>" method="post">
+                <div class="controls">
+                    <div class="form-group sentence">
+                        <p><label>書名</label><input class="" type="text" name="title" value="<%= CGI.escapeHTML(@book.title) %>"></p>
+                        <p><label>著者</label><input class="" type="text" name="author" value="<%= CGI.escapeHTML(@book.author) %>"></p>
+                        <p><label>読了日</label><input class="" type="text" name="date" value="<%= @book.date %>"></p>
+                        <p class="rate"><label>評価(1~5)</label><small class="description">0</small><input class="input-range" type="range" min="1" max="5" name="rate" value="<%= @book.rate %>"><small class="description">5</small></p>
+                        <div class="form-group">
+                            <span><label>コメント</label><input type="button" class="btn-outline-dark btn pull-right" onClick="clearText( )" value="クリア"></span>
+                            <textarea class="comment" name="comment" id="comment" placeholder=""><%= CGI.escapeHTML(@book.comment) %></textarea>
+                        </div>
+                        <p><label>ジャンル</label><select class="" name="list">
+                            <% List.had_by(current_user).each do |list| %>
+                                <option value="<%= list.id %>">
+                                    <% if list.id == @book.list.id %>
+                                        ×
+                                    <% end %>
+                                    <%= list.name %>
+                                </option>
                             <% end %>
-                            <%= list.name %>
-                        </option>
-                    <% end %>
-                </select>
-            </div>
-            <div>
-                <input type="submit" class="btn" style="background-color: #AAAAAA; color: white;" value="登録">
-            </div>
-        </div>
-    </form>
+                        </select></p>
+                    </div>
+                    <div>
+                        <input type="reset" class="btn font-white back-black" value="リセット" ><input type="submit" class="btn" style="background-color: #AAAAAA; color: white;" value="登録">
+                    </div>
+                </div>
+            </form>
+    	</div>
+    </div>
 </div>
+<script language="JavaScript">
+function clearText(){
+     document.getElementById('comment').value = "";
+};
+</script>

@@ -1,14 +1,21 @@
 <div class="container">
-    <form action="/singin" method="post">
-        <div>
-            <div class="form-group">
-                <label>ユーザー名とパスワードを入力してください。</label>
-                <input class="form-control" name="name" placeholder="名前を入力"><br>
-                <input class="form-control" name="password"  type="password" placeholder="パスワードを入力"><br>
-            </div>
-            <div>
-                <input type="submit" class="btn" style="background-color: #AAAAAA; color: white;" value="ログイン">
-            </div>
-        </div>
-    </form>
+    <div class="panel panel-default">
+    	<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
+    	    <h4 class="font-white">ログイン</h4>
+    	</div>
+    	<div class="panel-body">
+            <form action="/singin" method="post">
+                <div class="controls">
+                    <div class="form-group sentence">
+                        <label>ユーザー名とパスワードを入力してください。</label>
+                        <input class="form-control" name="name" placeholder="名前を入力"><br>
+                        <input class="form-control" name="password"  type="password" placeholder="パスワードを入力"><br>
+                    </div>
+                    <div>
+                        <input type="submit" class="btn" style="background-color: #AAAAAA; color: white;" value="ログイン">
+                    </div>
+                </div>
+            </form>
+    	</div>
+    </div>
 </div>

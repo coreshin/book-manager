@@ -1,37 +1,41 @@
-<!--<div class="container panel panel-default">-->
-<!--	<div>-->
-<!--		<div>-->
-<!--			<table class="table">-->
-<!--				<thread>-->
-<!--					<tr>-->
-<!--						<th>書名</th>-->
-<!--						<th>読了日</th>-->
-<!--						<th>評価</th>-->
-<!--						<th>コメント</th>-->
-<!--						<th>削除</th>-->
-<!--					</tr>-->
-<!--				</thread>-->
-<!--				<tbody>-->
-<!--					<% @books.each do |book| %>-->
-<!--						<tr>-->
-<!--							<td><%= CGI.escapeHTML(book.title) %></td>-->
-<!--							<td><%= book.date %></td>-->
-<!--							<td><%= book.rate %></td>-->
-<!--							<td><%= book.comment %></td>-->
-<!--							<td>-->
-<!--								<form action="/books/<%= book.id %>/delete" method="post">-->
-<!--									<input type="submit" value="削除">-->
-<!--								</form>-->
-<!--							</td>-->
-<!--						</tr>-->
-<!--					<% end %>-->
-<!--					<tr><td colspan="6"><a href="/books/new">新たに読んだ本</a></td></tr>-->
-<!--				</tbody>-->
-<!--			</table>-->
-<!--		</div>-->
-<!--	</div>-->
-<!--</div>-->
-
+<% if current_user.nil? %>
+<div class="container font-white">
+	<!--<div class="panel panel-default">-->
+		<!--<div class="panel-body">-->
+			<div class="row">
+				<div class="col-lg-12 text-left">
+					<h2 class="h2"><dt>ようこそブックマネージャー(仮)へ！</dt></h2>
+					<p class="lead serif">あなたのための読書記録。</p>
+					<a href="/signup" class="btn back-blue font-white hvr-float" role="button" aria-pressed="true">今すぐに登録 (無料)</a>
+				</div>
+			</div>
+			<div class="row text-left serif">
+				<div class="col-lg-6">
+				<h3><dt>ブックマネージャーとは？</dt></h3>
+				<p>
+					ブックマネージャーは読んだ本の記録を取ることに特化したWEBサービスです。<br>
+					「あの本なんだっけ？思い出せない！」作者自身のそんな悩みを解消するために生まれたのがこの「ブックマネージャー(仮)」です。<br>
+					自分だけの読書記録を取ってみたい方、気軽に使ってみてください。<br>
+					現在開発中ですので、不具合が存在する可能性がございます。ご了承ください。<br>
+				</p>
+				</div>
+				<div class="col-lg-6">
+				<h3><dt>どう使えばいいの？</dt></h3>
+				<p>
+					まずは上のボタンからアカウントを作成してください。もちろん無料です。<br>
+					ログインができたら早速「新たに読んだ本」というボタンを押して、今日読んだ本のことを書いてみましょう。記入が済んだら「登録」ボタンを押します。そうすれば「投稿一覧」にその内容が反映されます。<br>
+					毎回続ければ、自分だけの「読書記録」が出来上がります。<br>
+					素敵な本に出会ったら、使ってみましょう。<br>
+				</p>
+				<p>
+					それでは素敵な読書ライフを！
+				</p>
+				</div>
+			</div>
+		<!--</div>-->
+	<!--</div>-->
+</div>
+<% else %>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3">
@@ -39,38 +43,47 @@
 				<li class="list-group-item font-white" style="background-color:black">カテゴリー</li>
 				<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
 				<% @lists.each do |list| %>
-					<li class="list-group-item"><a href="/list/<%= list.id %>" class="sentence"><%= list.name %></a></li>
+					<li class="list-group-item book-list" data-id="<%= list.id %>">
+						<a href="/list/<%= list.id %>" class="sentence"><%= list.name %></a>
+						<i class="fa fa-times-circle list-delete" data-id="<%= list.id %>"></i>
+					</li>
 				<% end %>
 				<li class="list-group-item"><a href="/lists/new" class="sentence">新規カテゴリー</a></li>
 			</ul>
 		</div>
 		<div class="col-lg-3"></div>
-		<div class="col-lg-9">	
+		<div class="col-lg-9">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color:black">
+				<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
 					<h4 class="font-white">投稿一覧</h4>
 				</div>
+				<% if @books.count.zero? %>
+					<div class="panel-body post">
+						<p class="description sentence">まだ投稿はありません</p>
+					</div>
+				<% else %>
 				<% @books.each do |book| %>
-			    <div class="panel-body">
+			    <div class="panel-body post" data-id="<%= book.id %>">
+			    	<div class="post-button">
+						<a class="book-edit" aria-pressed="true" href="/books/<%= book.id %>/edit"><i class="fa fa-pencil-square-o"></i></a>
+						<a class="book-delete" aria-pressed="true" data-id="<%= book.id %>"><i class="fa fa-times"></i></a>
+			    	</div>
 			    	<h3><%= CGI.escapeHTML(book.title) %><br>
 			    	<small class="sentence text-muted">著:<%= CGI.escapeHTML(book.author) %></small></h3>
-			    	<p class="sentence">読了日:<%= book.date %></p>
 			    	<p class="sentence">評価:<span style="color: yellow; font-size: 20px;"><%= '★' * book.rate %></span></p>
-					<p class="sentence">お気に入り:<a href="/books/<%= book.id %>/star" style="
+					<p class="sentence">お気に入り:
 					<% if book.star %>
-					color:red;
+					<a class="star" data-id="<%= book.id %>" style="color:red;">★</a>
 					<% else %>
-					color:#848484;
+					<a class="star black" data-id="<%= book.id %>" style="color:#848484;">★</a>
 					<% end %>
-					">★</a></p>
-			    	<p class="sentence">コメント:<br>
-			    	<%= CGI.escapeHTML(book.comment) %></p>
-			    	<div class="">
-						<a href="/books/<%= book.id %>/delete" class="btn font-white back-gray" role="button" aria-pressed="true">削除</a>
-						<a href="/books/<%= book.id %>/edit" class="btn back-black font-white" role="button" aria-pressed="true">編集</a>
-			    	</div>
+					</p>
+					<blockquote class="blockquote sentence">
+						<p class="mb-0"><%= (book.comment).gsub("\n","<br/>") %></p>
+						<footer class="blockquote-footer"><%= current_user.name %> <cite title=""><%= book.date %></cite></footer>
+					</blockquote>
 			    </div>
-			    <hr>
+			    <% end %>
 			    <% end %>
 			    <div class="panel-body">
 			    	<h4><a href="/books/new" class="btn back-black font-white" role="button">新たに読んだ本</a></h4>
@@ -79,3 +92,4 @@
 		</div>
 	</div>
 </div>
+<% end %>

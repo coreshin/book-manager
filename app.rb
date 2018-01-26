@@ -23,13 +23,14 @@ get '/' do
     if current_user.nil?
         @books = Book.none
         @lists = List.none
-    # elsif params[:list].nil? then
-    #     @books = current_user.books
-        # @lists = List.none
     else
         @books = Book.had_by(current_user)
         @lists = List.had_by(current_user)
     end
+    erb :index
+end
+
+get '/index' do
     erb :index
 end
 
@@ -89,17 +90,21 @@ post '/books' do
     end
 end
 
-get '/books/:id/delete' do
-    book =Book.find(params[:id])
+get '/book/:id/delete' do
+    book = Book.find(params[:id])
     book.destroy
-    redirect '/'
+    content_type :json
+    data = {}
+    data.to_json
 end
 
 get '/books/:id/star' do
     book = Book.find(params[:id])
     book.star = !book.star
     book.save
-    redirect '/'
+    content_type :json
+    data = {star: book.star}
+    data.to_json
 end
 
 get '/books/:id/edit' do
@@ -119,6 +124,7 @@ post '/books/:id' do
         book.date = Date.parse(params[:date])
         book.rate = params[:rate]
         book.comment = params[:comment]
+        # ¥n -> <br>
         book.list_id = list.id
         book.save
         redirect '/'
@@ -143,6 +149,15 @@ end
 get '/lists/new' do
     erb :new_list
 end
+
+get '/list/:id/delete' do
+    list = List.find(params[:id])
+    list.destroy
+    content_type :json
+    data = {}
+    data.to_json
+end
+
 
 post '/lists' do
     current_user.lists.create(
