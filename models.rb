@@ -11,7 +11,12 @@ class User < ActiveRecord::Base
         presence: true,
         format: { with: /\A\w+\z/ }
     validates :password,
-        length: { in: 5..10 }
+        length: { in: 5..10 },
+        on: :create
+    validates :password,
+        length: { in: 5..10 },
+        allow_blank: true,
+        on: :update
     has_many :books
     has_many :lists
 end

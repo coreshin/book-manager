@@ -7,17 +7,22 @@
     <!--<link rel="icon" href="favicon.png" type="image/png">-->
     <meta name="description" content="">
     <meta name="author" content="coreshin">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    
     <link rel="stylesheet" href="/assets/css/book.css">
     <link rel="stylesheet" href="/assets/css/footer-distributed.css">
     <link rel="stylesheet" href="/assets/css/hover.css" media="all">
+    <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css"/>
     
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
 	<script src="/script/book.js"></script>
+	<script type="text/javascript" src="/script/cropperImg.js"></script>
 </head>
 <body background="/img/dark-wood.jpg">
     <nav class="navbar navbar-default" style="background: url(/img/library.jpg) no-repeat center;background-size: cover; border: none;">
@@ -25,19 +30,19 @@
             <div class="page-header" style="border: none;">
                 <a href="/"><img src="/img/logo.png" id="logo" width="50%" heigth="50%"></a>
             </div>
-            <p class=" nav navbar-nav navbar-left font-white lead" style="font-family: serif;">あなたのための、読書記録（仮）<!--<small><a href="./about.html">詳しくみる</a></small>--></p>
-            <ul class="nav navbar-nav navbar-right"><h4>
+            <p class="nav navbar-nav navbar-left font-white serif nav-lead">あなたのための、読書記録（仮）</p>    
+            <ul class="nav navbar-nav navbar-right ">
             <% if !current_user.nil? %>
-                <li class="font-white">こんにちは<%= current_user.name %>さん</li>
-                <li><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></li>
+                <li class="font-white"><h4>こんにちは<a href="/user"><%= current_user.name %></a>さん</h4></li>
+                <li><span><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></span></li>
             <% else %>
-                <li class="font-white ">新規ユーザーですか？</li>
+                <li class="font-white"><h4>新規ユーザーですか？</h4></li>
                 <span>
                     <a href="/signin" class="btn back-black font-white" role="button" aria-pressed="true">ログイン</a>
                     <a href="/signup" class="btn back-gray font-white" role="button" aria-pressed="true">新規登録</a>
                 </span>
             <% end %>
-            </h4></ul>
+            </ul>
         </div>
     </nav>
     <%= yield %>

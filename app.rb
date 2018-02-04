@@ -69,6 +69,30 @@ end
 
 #ここからアプリの中身
 
+get '/user' do
+    erb :user
+end
+
+get '/user_edit' do
+    erb :user_edit
+end
+
+post '/user/edit' do
+    user = current_user
+    
+    user.name = params[:name]
+    user.description = params[:description]
+    auth = {
+    cloud_name: "dkbvz4tou",
+    api_key:    "687247844292951",
+    api_secret: "VUJLyQ0Hn_qWjnoXFOafUTtlblA"
+    }
+    # logger.info params[:image]
+    user.image = Cloudinary::Uploader.upload(params[:image], auth)['secure_url']
+    user.save
+    redirect '/'
+end
+
 get '/books/new' do
     erb :new
 end

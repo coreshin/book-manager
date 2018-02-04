@@ -9,7 +9,7 @@ $(function(){
                 'id':$(bookId).val(),
                 },
             success: function(json) {
-                console.log(book)
+                console.log('book-' + bookId + ' has deleted')
                 $(book).slideUp('fast');
             }
         });
@@ -24,7 +24,7 @@ $(function(){
                 'id':$(listId).val(),
                 },
             success: function(json) {
-                console.log(list)
+                console.log('list-' + listId + ' has deleted')
                 $(list).slideUp('fast');
             }
         });
@@ -44,14 +44,14 @@ $(function(){
                 console.log('A');
                 $(star).css(
                     {
-                        'color':'#848484'
+                        'color':'red'
                     }
                     );
                 }else{
-                    console.log('B');
+                console.log('B');
                 $(star).css(
                     {
-                        'color':'red'
+                        'color':'#848484'
                     } 
                     );
                 }

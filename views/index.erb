@@ -78,9 +78,9 @@
 					<a class="star black" data-id="<%= book.id %>" style="color:#848484;">★</a>
 					<% end %>
 					</p>
-					<blockquote class="blockquote sentence">
+					<blockquote class="blockquote sentence" style="border: none;">
 						<p class="mb-0"><%= (book.comment).gsub("\n","<br/>") %></p>
-						<footer class="blockquote-footer"><%= current_user.name %> <cite title=""><%= book.date %></cite></footer>
+						<footer class="blockquote-footer"><%= current_user.name %> <%= book.date %></footer>
 					</blockquote>
 			    </div>
 			    <% end %>
