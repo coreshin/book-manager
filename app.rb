@@ -4,6 +4,8 @@ require 'sinatra/reloader' if development?
 
 require 'sinatra/activerecord'
 require './models'
+require 'base64'
+require 'tempfile'
 
 enable :sessions
 
@@ -26,6 +28,7 @@ get '/' do
     else
         @books = Book.had_by(current_user)
         @lists = List.had_by(current_user)
+        @title = '全ての投稿'
     end
     erb :index
 end
@@ -87,9 +90,12 @@ post '/user/edit' do
     api_key:    "687247844292951",
     api_secret: "VUJLyQ0Hn_qWjnoXFOafUTtlblA"
     }
-    # logger.info params[:image]
-    user.image = Cloudinary::Uploader.upload(params[:image], auth)['secure_url']
+    w = Tempfile.open
+    original = Base64.urlsafe_decode64(params[:image].split(',').last)
+    w.write(original)
+    user.image = Cloudinary::Uploader.upload(w.path, auth)['secure_url']
     user.save
+    w.close
     redirect '/'
 end
 
@@ -160,6 +166,7 @@ end
 get '/books/star' do
     @lists = List.all
     @books = current_user.books.where(star: [true])
+    @title = 'お気に入り'
     erb :index
 end
 
@@ -167,6 +174,7 @@ get '/list/:id' do
     @lists = List.all
     list = List.find(params[:id])
     @books = list.books.had_by(current_user)
+    @title = list.name
     erb :index
 end
 

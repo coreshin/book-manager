@@ -38,24 +38,37 @@
 <% else %>
 <div class="container">
 	<div class="row">
-		<div class="col-lg-3">
-			<ul class="list-group">
-				<li class="list-group-item font-white" style="background-color:black">カテゴリー</li>
-				<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
-				<% @lists.each do |list| %>
-					<li class="list-group-item book-list" data-id="<%= list.id %>">
-						<a href="/list/<%= list.id %>" class="sentence"><%= list.name %></a>
-						<i class="fa fa-times-circle list-delete" data-id="<%= list.id %>"></i>
-					</li>
-				<% end %>
-				<li class="list-group-item"><a href="/lists/new" class="sentence">新規カテゴリー</a></li>
-			</ul>
-		</div>
+			<div class="col-lg-3">
+				<div class="panel panel-default">
+					<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
+						<h4 class="font-white">ユーザー情報</h4>
+					</div>
+					<div class="panel-body post">
+						<p class="form-group sentence"><label><img class="icon" src="<%= current_user.image %>"></label><a href="/user" class="user-name"><%= current_user.name %></a></p>
+						<p class="form-group sentence"><label>読んだ本</label><%= @books.count %>冊</p>
+						<P class="form-group sentence"><label>カテゴリー</label><%= @lists.count %>個</P>
+						<p><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></p>
+					</div>
+				</div>
+				<ul class="list-group">
+					<li class="list-group-item font-white" style="background-color:black">カテゴリー</li>
+					<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
+					<% @lists.each do |list| %>
+						<li class="list-group-item book-list" data-id="<%= list.id %>">
+							<a href="/list/<%= list.id %>" class="sentence"><%= list.name %></a>
+							<i class="fa fa-times-circle list-delete" data-id="<%= list.id %>"></i>
+						</li>
+					<% end %>
+					<li class="list-group-item"><a href="/lists/new" class="sentence">新規カテゴリー</a></li>
+				</ul>
+			</div>
 		<div class="col-lg-3"></div>
 		<div class="col-lg-9">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
-					<h4 class="font-white">投稿一覧</h4>
+					<h4 class="font-white">
+						<%= @title %>
+					</h4>
 				</div>
 				<% if @books.count.zero? %>
 					<div class="panel-body post">

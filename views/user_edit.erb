@@ -11,12 +11,13 @@
                         <img src="<%= current_user.image %>" class="icon">
                         <p><input id="image" type="file"></p>
                         <div class="img-container">
-                            <img src="" id="img−default" class="img-responsive"  alt="fluits">
+                            <img src="" id="img−default" class="img-responsive">
                         </div>
                         <canvas id="jsi-canvas" class="img-canvas" width="200" height="200"></canvas>
                         <div class="form-group">
                             <input type="button" value="決定" onclick="chgImg()">
-                            <img src="" id="new-icon" name="image" class="icon text-center">
+                            <img src="" id="new-icon" class="icon text-center">
+                            <input id="icon-data" type="hidden" value="data" name="image">
                         </div>
                         <p><label>ユーザー名</label><input class="" type="text" name="name" placeholder="" value="<%= current_user.name%>"></p>
                         <p><label>このユーザーについて</label></p>
@@ -123,5 +124,6 @@ function chgImg()
 {
   var png = cvs.toDataURL();
   document.getElementById("new-icon").src = png;
+  document.getElementById("icon-data").value = png;
 }
 </script>

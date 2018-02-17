@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title>ブックマネージャー（仮）</title>
     <link rel="shortcut icon" href="/favicon.ico">
-    <!--<link rel="icon" href="favicon.png" type="image/png">-->
-    <meta name="description" content="">
+    <meta name="description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です、不具合が存在します。">
     <meta name="author" content="coreshin">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     
@@ -33,8 +32,7 @@
             <p class="nav navbar-nav navbar-left font-white serif nav-lead">あなたのための、読書記録（仮）</p>    
             <ul class="nav navbar-nav navbar-right ">
             <% if !current_user.nil? %>
-                <li class="font-white"><h4>こんにちは<a href="/user"><%= current_user.name %></a>さん</h4></li>
-                <li><span><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></span></li>
+                <li class="nav-spacing"></li>
             <% else %>
                 <li class="font-white"><h4>新規ユーザーですか？</h4></li>
                 <span>
