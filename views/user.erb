@@ -8,7 +8,7 @@
                 <div class="form-group sentence">
                     <p><label>アイコン</label></p>
                     <% if current_user.image.nil? %>
-                    <p>画像がまだ設定されていません。</p>
+                    <img src="/img/default-profile.jpg" class="icon">
                     <% else %>
                     <img src="<%= current_user.image %>" class="icon">
                     <% end %>

@@ -44,7 +44,13 @@
 						<h4 class="font-white">ユーザー情報</h4>
 					</div>
 					<div class="panel-body post">
-						<p class="form-group sentence"><label><img class="icon" src="<%= current_user.image %>"></label><a href="/user" class="user-name"><%= current_user.name %></a></p>
+						<p class="form-group sentence"><label>
+							<% if current_user.image.nil? %>
+	                			<img src="/img/default-profile.jpg" class="icon">
+	                		<% else %>
+	                			<img src="<%= current_user.image %>" class="icon">
+	                		<% end %>
+                    	</label><a href="/user" class="user-name"><%= current_user.name %></a></p>
 						<p class="form-group sentence"><label>読んだ本</label><%= @books.count %>冊</p>
 						<P class="form-group sentence"><label>カテゴリー</label><%= @lists.count %>個</P>
 						<p><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></p>
