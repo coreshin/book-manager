@@ -9,12 +9,12 @@ class User < ActiveRecord::Base
     has_secure_password
     validates :name,
         presence: true,
-        format: { with: /\A\w+\z/ }
+        uniqueness: true
     validates :password,
-        length: { in: 5..10 },
+        length: { minimum: 5 },
         on: :create
     validates :password,
-        length: { in: 5..10 },
+        length: { minimum: 5 },
         allow_blank: true,
         on: :update
     has_many :books

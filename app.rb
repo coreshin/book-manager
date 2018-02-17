@@ -47,6 +47,9 @@ post '/signup' do
        password: params[:password],
        password_confirmation: params[:password_confirmation]
        )
+       user.lists.create(name: "小説")
+       user.lists.create(name: "実用書")
+       user.lists.create(name: "漫画")
     if user.persisted?
         session[:user] = user.id
     end
