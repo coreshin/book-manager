@@ -7,17 +7,19 @@
             <form action="/user/edit" method="post" enctype="multipart/form-data">
                 <div class="controls">
                     <div class="form-group sentence">
-                        <p><label>アイコン</label></p>
+                        <h4><label>アイコン</label></h4>
                         <img src="<%= current_user.image %>" class="icon">
                         <p><input id="image" type="file"></p>
-                        <div class="img-container">
-                            <img src="" id="img−default" class="img-responsive">
-                        </div>
-                        <canvas id="jsi-canvas" class="img-canvas" width="200" height="200"></canvas>
-                        <div class="form-group">
-                            <input type="button" value="決定" onclick="chgImg()">
-                            <img src="" id="new-icon" class="icon text-center">
-                            <input id="icon-data" type="hidden" value="data" name="image">
+                        <div id="icon-field" style="display:none;">
+                            <div class="img-container">
+                                <img src="" id="img−default" class="img-responsive">
+                            </div>
+                            <canvas id="jsi-canvas" class="img-canvas" width="200" height="200"></canvas>
+                            <div class="form-group">
+                                <input type="button" value="決定" onclick="chgImg()">
+                                <img src="" id="new-icon" class="icon text-center">
+                                <input id="icon-data" type="hidden" value="data" name="image">
+                            </div>
                         </div>
                         <p><label>ユーザー名</label><input class="" type="text" name="name" placeholder="" value="<%= current_user.name%>"></p>
                         <p><label>このユーザーについて</label></p>
@@ -47,7 +49,8 @@ obj1.addEventListener("change", function(evt){
     
     //読み込んだ画像とdataURLを書き出す
     document.getElementById("img−default").src = dataUrl;
-
+    // $('.cropper-container').empty();
+    $('#icon-field').slideToggle();
     
      var FLUITS = FLUITS || {};
     

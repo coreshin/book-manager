@@ -75,11 +75,7 @@ end
 
 #ここからアプリの中身
 
-get '/user' do
-    erb :user
-end
-
-get '/user_edit' do
+get '/user/edit' do
     erb :user_edit
 end
 
@@ -174,7 +170,7 @@ get '/books/star' do
 end
 
 get '/list/:id' do
-    @lists = List.all
+    @lists = List.had_by(current_user)
     list = List.find(params[:id])
     @books = list.books.had_by(current_user)
     @title = list.name
