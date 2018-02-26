@@ -163,7 +163,7 @@ post '/books/:id' do
 end
 
 get '/books/star' do
-    @lists = List.all
+    @lists = List.had_by(current_user)
     @books = current_user.books.where(star: [true])
     @title = 'お気に入り'
     erb :index
