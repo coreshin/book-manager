@@ -1,7 +1,7 @@
 <div class="container">
     <div class="panel panel-default">
-    	<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
-    		<h4 class="font-white">新しく読んだ本</h4>
+    	<div class="panel-heading header-grey">
+    		<h4>新しく読んだ本</h4>
     	</div>
     	<div class="panel-body">
             <form action="/books" method="post">
@@ -82,9 +82,9 @@
                             <% end %>
                         </select></p>
                     </div>
-                    <div>
-                        <input type="reset" class="btn font-white back-black" value="リセット" ><input type="submit" class="btn font-white back-gray" value="登録"><h4><a class="pull-right" href="/">戻る</a></h4>
-                    </div>
+                    <footer class="form-footer">
+                        <input type="reset" class="btn font-white back-black" value="リセット" ><input type="submit" class="btn font-white back-gray" value="登録"><a class="pull-right btn" href="/">戻る</a>
+                    </footer>
                 </div>
             </form>
         </div>

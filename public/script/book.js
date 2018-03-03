@@ -29,7 +29,7 @@ $(function(){
             }
         });
     }),
-    $('.star').click(function(){
+    $('.heart').click(function(){
        var bookId = this.dataset.id;
        var star = this;
         $.ajax({
@@ -44,7 +44,7 @@ $(function(){
                 console.log('A');
                 $(star).css(
                     {
-                        'color':'red'
+                        'color':'#e0245e'
                     }
                     );
                 }else{

@@ -1,7 +1,7 @@
 /*global_setting*/
 .font-black{color: black;}
 .font-white{color: white;}
-.back-black{background-color: #000000;}
+.back-black{background-color: #494b4c;}
 .back-white{background-color: white;}
 .back-gray{background-color: #AAAAAA;}
 .back-blue{background-color: #0275d8;}
@@ -22,6 +22,9 @@
 .serif{
     font-family: serif;
 }
+.sans-serif{
+    font-family: sans-serif;
+}
 .sentence{
     color: black;
     font-family: serif;
@@ -31,7 +34,9 @@
     font-family: sans-serif;
     color: grey;
 }
-
+.left-dash:before{
+    content: '\2014 \00A0';
+}
 .icon{
     border-radius: 50%;
     border: 1px gray solid;
@@ -42,7 +47,26 @@
     color: black;
 }
 
+body{
+    background-image: url(/img/dark-wood.jpg);
+    /*background-color:rgb(105, 56, 39); */
+    -webkit-font-smoothing: antialiased;
+}
+
+div.panel-default>div.header-grey, li.header-grey{
+    background-color: #494b4c; background-image: none; color: white;
+}
+
 /*navigation_bar*/
+nav.navbar{
+    background: url(/img/library.jpg) no-repeat center;
+    background-size: cover;
+    /*background:rgb(178, 152, 129);*/
+    border:none;
+    border-bottom: #654747 solid 1px;
+    border-radius: 0px;
+    margin-bottom: 40px;
+}
 p.nav-lead{
     font-size: 2vw;
     margin-left: 3em;
@@ -92,11 +116,12 @@ i.list-delete{
 .post-button{
     position: absolute;
     right: 30px;
-    width: 64px;
+    width: 96px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     opacity: 0;
+    font-size: 20px;
 }
 .post:hover .post-button{
     opacity: 1;
@@ -117,11 +142,18 @@ i.list-delete{
     color: black;
     opacity: 1
 }
+.rate-star{
+    font-size: 20px;
+    color: rgba(0,0,0,0);
+    background-image: linear-gradient(270deg, #efc860 3%, #ffea86 57%);
+    -webkit-background-clip: text; 
+}
 .rate{
     display: flex;
     align-items: center;
 }
-a.star:hover{
+
+a.heart:hover{
     text-decoration: none;
     cursor: pointer;
 }
@@ -164,7 +196,9 @@ select[name="month"].month{ width: 100%}
 select[name="day"].day{ width: 100%}
 .form-group label{ margin-right: 10px;}
 .rate .description{ margin: 0 10px;}
-
+.form-footer{
+    font-size: inherit;
+}
 /*user_info*/
 .img-container {
 width: 400px;

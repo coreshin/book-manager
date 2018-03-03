@@ -1,47 +1,43 @@
 <% if current_user.nil? %>
 <div class="container font-white">
-	<!--<div class="panel panel-default">-->
-		<!--<div class="panel-body">-->
-			<div class="row">
-				<div class="col-lg-12 text-left">
-					<h2 class="h2"><dt>ようこそブックマネージャー(仮)へ！</dt></h2>
-					<p class="lead serif">あなたのための読書記録。</p>
-					<a href="/signup" class="btn back-blue font-white hvr-fade" role="button" aria-pressed="true">今すぐに登録 (無料)</a>
-				</div>
-			</div>
-			<div class="row text-left serif">
-				<div class="col-lg-6">
-				<h3><dt>ブックマネージャーとは？</dt></h3>
-				<p>
-					ブックマネージャーは読んだ本の記録を取ることに特化したWEBサービスです。<br>
-					「あの本なんだっけ？思い出せない！」作者自身のそんな悩みを解消するために生まれたのがこの「ブックマネージャー(仮)」です。<br>
-					自分だけの読書記録を取ってみたい方、気軽に使ってみてください。<br>
-					現在開発中ですので、不具合が存在する可能性がございます。ご了承ください。<br>
-				</p>
-				</div>
-				<div class="col-lg-6">
-				<h3><dt>どう使えばいいの？</dt></h3>
-				<p>
-					まずは上のボタンからアカウントを作成してください。もちろん無料です。<br>
-					ログインができたら早速「新たに読んだ本」というボタンを押して、今日読んだ本のことを書いてみましょう。記入が済んだら「登録」ボタンを押します。そうすれば「投稿一覧」にその内容が反映されます。<br>
-					毎回続ければ、自分だけの「読書記録」が出来上がります。<br>
-					素敵な本に出会ったら、使ってみましょう。<br>
-				</p>
-				<p>
-					それでは素敵な読書ライフを！
-				</p>
-				</div>
-			</div>
-		<!--</div>-->
-	<!--</div>-->
+	<div class="row">
+		<div class="col-lg-12 text-left">
+			<h2 class="h2"><dt>ようこそブックマネージャー(仮)へ！</dt></h2>
+			<p class="lead serif">あなたのための読書記録。</p>
+			<a href="/signup" class="btn back-blue font-white hvr-fade" role="button" aria-pressed="true">今すぐに登録 (無料)</a>
+		</div>
+	</div>
+	<div class="row text-left serif">
+		<div class="col-lg-6">
+		<h3><dt>ブックマネージャーとは？</dt></h3>
+		<p>
+			ブックマネージャーは読んだ本の記録を取ることに特化したWEBサービスです。<br>
+			「あの本なんだっけ？思い出せない！」作者自身のそんな悩みを解消するために生まれたのがこの「ブックマネージャー(仮)」です。<br>
+			自分だけの読書記録を取ってみたい方、気軽に使ってみてください。<br>
+			現在開発中ですので、不具合が存在する可能性がございます。ご了承ください。<br>
+		</p>
+		</div>
+		<div class="col-lg-6">
+		<h3><dt>どう使えばいいの？</dt></h3>
+		<p>
+			まずは上のボタンからアカウントを作成してください。もちろん無料です。<br>
+			ログインができたら早速「新たに読んだ本」というボタンを押して、今日読んだ本のことを書いてみましょう。記入が済んだら「登録」ボタンを押します。そうすれば「投稿一覧」にその内容が反映されます。<br>
+			毎回続ければ、自分だけの「読書記録」が出来上がります。<br>
+			素敵な本に出会ったら、使ってみましょう。<br>
+		</p>
+		<p>
+			それでは素敵な読書ライフを！
+		</p>
+		</div>
+	</div>
 </div>
 <% else %>
 <div class="container">
 	<div class="row">
 			<div class="col-lg-3">
 				<div class="panel panel-default">
-					<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
-						<h4 class="font-white">ユーザー情報</h4>
+					<div class="panel-heading header-grey">
+						<h4>ユーザー情報</h4>
 					</div>
 					<div class="panel-body post">
 						<div class="form-group sentence">
@@ -52,7 +48,7 @@
 		                			<img src="<%= current_user.image %>" class="icon">
 		                		<% end %>
 	                    	</label><%= current_user.name %></span>
-							<p><label>読んだ本</label><%= @books.count %>冊</p>
+							<p><label>読んだ本</label><%= Book.had_by(current_user).count %>冊</p>
 							<P><label>カテゴリー</label><%= @lists.count %>個</P>
 							<dl id="acMenu">
 								<dd>
@@ -63,12 +59,12 @@
 						    	</dd>
     							<dt>詳細</dt>
 							</dl>
-							<p><a href="/signout" class="btn back-black font-white" role="button" aria-pressed="true">ログアウト</a></p>
+							<p><a href="/signout" class="btn back-black font-white sans-serif" role="button" aria-pressed="true">ログアウト</a></p>
 						</div>
 					</div>
 				</div>
 				<ul class="list-group">
-					<li class="list-group-item font-white" style="background-color:black">カテゴリー</li>
+					<li class="list-group-item header-grey"><h4>カテゴリー</h4></li>
 					<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
 					<% @lists.each do |list| %>
 						<li class="list-group-item book-list" data-id="<%= list.id %>">
@@ -79,13 +75,10 @@
 					<li class="list-group-item"><a href="/lists/new" class="sentence">新規カテゴリー</a></li>
 				</ul>
 			</div>
-		<div class="col-lg-3"></div>
 		<div class="col-lg-9">
 			<div class="panel panel-default">
-				<div class="panel-heading" style="background-color: black; background-image: none; color: white;">
-					<h4 class="font-white">
-						<%= @title %>
-					</h4>
+				<div class="panel-heading header-grey">
+					<h4><%= @title %></h4>
 				</div>
 				<% if @books.count.zero? %>
 					<div class="panel-body post">
@@ -95,22 +88,20 @@
 				<% @books.each do |book| %>
 			    <div class="panel-body post" data-id="<%= book.id %>">
 			    	<div class="post-button">
+			    		<% if book.star %>
+						<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#e0245e;"><i class="fa fa-heart"></i></a>
+						<% else %>
+						<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#848484;"><i class="fa fa-heart"></i></a>
+						<% end %>
 						<a class="book-edit" aria-pressed="true" href="/books/<%= book.id %>/edit"><i class="fa fa-pencil-square-o"></i></a>
 						<a class="book-delete" aria-pressed="true" data-id="<%= book.id %>"><i class="fa fa-times"></i></a>
 			    	</div>
 			    	<h3><%= CGI.escapeHTML(book.title) %><br>
-			    	<small class="sentence text-muted">著:<%= CGI.escapeHTML(book.author) %></small></h3>
-			    	<p class="sentence">評価:<span style="color: yellow; font-size: 20px;"><%= '★' * book.rate %></span></p>
-					<p class="sentence">お気に入り:
-					<% if book.star %>
-					<a class="star" data-id="<%= book.id %>" style="color:red;">★</a>
-					<% else %>
-					<a class="star black" data-id="<%= book.id %>" style="color:#848484;">★</a>
-					<% end %>
-					</p>
-					<blockquote class="blockquote sentence" style="border: none;">
-						<p class="mb-0"><%= (book.comment).gsub("\n","<br/>") %></p>
-						<footer class="blockquote-footer"><%= current_user.name %> <%= book.date %></footer>
+			    	<small class="sentence text-muted left-dash"><%= CGI.escapeHTML(book.author) %></small></h3>
+				    <blockquote class="blockquote sentence" style="border: none;">
+				    	<p class="sentence"><span class="rate-star"><%= '★</span><span class="rate-star">' * book.rate %></span></p>
+						<p class="mb-0"><%= CGI.escapeHTML(book.comment).gsub("\n","<br/>") %></p>
+						<p class="text-muted"><%= book.date %></p>
 					</blockquote>
 			    </div>
 			    <% end %>

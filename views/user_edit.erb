@@ -1,6 +1,6 @@
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading" style="background-color: black; background-image: none; color: white;">
+        <div class="panel-heading header-grey">
             <h4 class="font-white">ユーザー情報を編集</h4>
         </div>
         <div class="panel-body">
@@ -25,9 +25,9 @@
                         <p><label>このユーザーについて</label></p>
                         <textarea class="user-description" name="description"><%= current_user.description %></textarea>
                     </div>
-                    <div>
-                        <input type="submit" class="btn font-white back-gray" value="登録">
-                    </div>
+                    <footer class="form-footer">
+                        <input type="reset" class="btn font-white back-black" value="リセット" ><input type="submit" class="btn font-white back-gray" value="登録"><a class="pull-right btn" href="/">戻る</a>
+                    </footer>
                 </div>
             </form>
         </div>
