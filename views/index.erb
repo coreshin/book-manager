@@ -65,8 +65,8 @@
 				</div>
 				<ul class="list-group">
 					<li class="list-group-item header-grey"><h4>カテゴリー</h4></li>
-					<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
 					<li class="list-group-item"><a href="/" class="sentence">全ての投稿</a></li>
+					<li class="list-group-item"><a href="/books/star" class="sentence">お気に入り</a></li>
 					<% @lists.each do |list| %>
 						<li class="list-group-item book-list" data-id="<%= list.id %>">
 							<a href="/list/<%= list.id %>" class="sentence"><%= list.name %></a>
