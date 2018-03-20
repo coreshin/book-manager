@@ -34,6 +34,9 @@ end
 
 class List < ActiveRecord::Base
     scope :had_by, -> (user) { where(user_id: user.id) }
+    
+    validates :name,
+        presence: true
     has_many :books
     belongs_to :user
 end

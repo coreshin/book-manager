@@ -73,7 +73,7 @@
 							<i class="fa fa-times-circle list-delete" data-id="<%= list.id %>"></i>
 						</li>
 					<% end %>
-					<li class="list-group-item"><a href="/lists/new" class="sentence">新規カテゴリー</a></li>
+					<li class="list-group-item" id="new-list"><a data-openmodal="ModalWindow1" class="sentence">新規カテゴリー</a></li>
 				</ul>
 			</div>
 		<div class="col-lg-9">
@@ -81,44 +81,162 @@
 				<div class="panel-heading header-grey">
 					<h4><%= @title %></h4>
 				</div>
-				<% if @books.count.zero? %>
-					<div class="panel-body post">
-						<p class="description sentence">まだ投稿はありません</p>
-					</div>
-				<% else %>
-				<% @books.each do |book| %>
-			    <div class="panel-body post" data-id="<%= book.id %>">
-			    	<div class="post-button">
-			    		<% if book.star %>
-						<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#e0245e;"><i class="fa fa-heart"></i></a>
-						<% else %>
-						<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#848484;"><i class="fa fa-heart"></i></a>
-						<% end %>
-						<a class="book-edit" aria-pressed="true" href="/books/<%= book.id %>/edit"><i class="fa fa-pencil-square-o"></i></a>
-						<a class="book-delete" aria-pressed="true" data-id="<%= book.id %>"><i class="fa fa-times"></i></a>
-			    	</div>
-			    	<h3><%= CGI.escapeHTML(book.title) %><br>
-			    	<small class="sentence text-muted left-dash"><%= CGI.escapeHTML(book.author) %></small></h3>
-				    <blockquote class="blockquote sentence" style="border: none;">
-				    	<p class="sentence"><span class="rate-star"><%= '★</span><span class="rate-star">' * book.rate %></span></p>
-						<p class="mb-0"><%= CGI.escapeHTML(book.comment).gsub("\n","<br/>") %></p>
-						<p class="text-muted"><%= book.date %></p>
-					</blockquote>
-			    </div>
-			    <% end %>
-			    <% end %>
-			    <div class="panel-body">
-			    	<h4><a href="/books/new" class="btn back-black font-white" role="button">新たに読んだ本</a></h4>
+					<% if @books.count.zero? %>
+						<div class="panel-body post">
+							<p class="description sentence">まだ投稿はありません</p>
+						</div>
+					<% else %>
+						<% @books.each do |book| %>
+					    <div class="panel-body post" data-id="<%= book.id %>">
+					    	<div class="post-button">
+					    		<% if book.star %>
+								<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#e0245e;"><i class="fa fa-heart"></i></a>
+								<% else %>
+								<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#848484;"><i class="fa fa-heart"></i></a>
+								<% end %>
+								<a class="book-edit" aria-pressed="true" href="/books/<%= book.id %>/edit"><i class="fa fa-pencil-square-o"></i></a>
+								<a class="book-delete" aria-pressed="true" data-id="<%= book.id %>"><i class="fa fa-times"></i></a>
+					    	</div>
+					    	<h3><%= CGI.escapeHTML(book.title) %><br>
+					    	<small class="sentence text-muted left-dash"><%= CGI.escapeHTML(book.author) %></small></h3>
+						    <blockquote class="blockquote sentence" style="border: none;">
+						    	<p class="sentence"><span class="rate-star"><%= '★</span><span class="rate-star">' * book.rate %></span></p>
+								<p class="mb-0"><%= CGI.escapeHTML(book.comment).gsub("\n","<br/>") %></p>
+								<p class="text-muted"><%= book.date %></p>
+							</blockquote>
+					    </div>
+					    <% end %>
+			    	<% end %>
+			    <div class="panel-body new-post">
+			    	<h4><a data-openmodal="ModalWindow2" class="btn back-black font-white" role="button">新たに読んだ本</a></h4>
 			    </div>
 			</div>
 		</div>
 	</div>
 </div>
-<% end %>
-<script>
-    $(function(){
-        $("#acMenu dt").on("click", function() {
-            $(this).prev().slideToggle();
-        });
+
+<!--モーダルウィンドウ-->
+<div id="ModalWindow1" class="modalwindow">
+    <div class="panel panel-default body">
+    	<i data-closemodal="ModalWindow1" class="fa fa-times-circle modal-close"></i>
+        <div class="panel-heading header-grey">
+        	<h4>カテゴリーを追加</h4>
+        </div>
+        <div class="panel-body">
+            <div class="controls">
+                <div class="form-group sentence">
+                    <labe>新しいカテゴリー</labe>
+                    <input type="text" name="name" placeholder=""><br>
+                </div>
+                <div>
+                    <button class="btn font-white back-gray list-add">登録</button><a class="pull-right btn" data-closemodal="ModalWindow1">閉じる</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="ModalWindow2" class="modalwindow">
+    <div class="panel panel-default body">
+    	<i data-closemodal="ModalWindow2" class="fa fa-times-circle modal-close"></i>
+    	<div class="panel-heading header-grey">
+    		<h4>新しく読んだ本</h4>
+    	</div>
+    	<div class="panel-body">
+    		<form>
+	            <div class="control">
+	                <div class="form-group sentence">
+	                    <p><label>書名</label><input class="" type="text" name="title" placeholder=""></p>
+	                    <p><label>著者</label><input class="" type="text" name="author" placeholder=""></p>
+	                    <div class="row">
+	                        <div class="form-group col-sm-2"><label>読了日</label></div>
+	                        <div class="form-group col-sm-2">
+	                            <select class="year" name="year">
+	                                <option value="2017">2017</option>
+	                                <option value="2018">2018</option>
+	                                <option value="2019">2019</option>
+	                                <option value="2020">2020</option>
+	                            </select>
+	                        </div>
+	                        <div class="form-group col-sm-2">
+	                            <select class="month" name="month">
+	                                <option value="1">1</option>
+	                                <option value="2">2</option>
+	                                <option value="3">3</option>
+	                                <option value="4">4</option>
+	                                <option value="5">5</option>
+	                                <option value="6">6</option>
+	                                <option value="7">7</option>
+	                                <option value="8">8</option>
+	                                <option value="9">9</option>
+	                                <option value="10">10</option>
+	                                <option value="11">11</option>
+	                                <option value="12">12</option>>
+	                            </select>
+	                        </div>
+	                        <div class="form-group col-sm-2">
+	                            <select class="day" name="day">
+	                                <option value="1">1</option>
+	                                <option value="2">2</option>
+	                                <option value="3">3</option>
+	                                <option value="4">4</option>
+	                                <option value="5">5</option>
+	                                <option value="6">6</option>
+	                                <option value="7">7</option>
+	                                <option value="8">8</option>
+	                                <option value="9">9</option>
+	                                <option value="10">10</option>
+	                                <option value="11">11</option>
+	                                <option value="12">12</option>
+	                                <option value="13">13</option>
+	                                <option value="14">14</option>
+	                                <option value="15">15</option>
+	                                <option value="16">16</option>
+	                                <option value="17">17</option>
+	                                <option value="18">18</option>
+	                                <option value="19">19</option>
+	                                <option value="20">20</option>
+	                                <option value="21">21</option>
+	                                <option value="22">22</option>
+	                                <option value="23">23</option>
+	                                <option value="24">24</option>
+	                                <option value="25">25</option>
+	                                <option value="26">26</option>
+	                                <option value="27">27</option>
+	                                <option value="28">28</option>
+	                                <option value="29">29</option>
+	                                <option value="30">30</option>
+	                                <option value="31">31</option>
+	                            </select>
+	                        </div>
+	                    </div>
+	                    <p class="rate"><label>評価(1~5)</label><small class="description">1</small><input class="input-range" type="range" min="1" max="5" name="rate"><small class="description">5</small></p>
+	                    <div class="form-group">
+	                        <span><label>コメント</label><input type="button" class="btn-outline-dark btn pull-right" onClick="clearText( )" value="クリア"></span>
+	                        <textarea class="comment" name="comment" id="comment" placeholder=""></textarea>
+	                    </div>
+	                    <p><label>ジャンル</label><select class="" name="list">
+	                        <% List.had_by(current_user).each do |list| %>
+	                            <option value="<%= list.id %>"><%= list.name %></option>
+	                        <% end %>
+	                    </select></p>
+	                </div>
+	                <footer class="form-footer">
+	                    <input type="reset" class="btn font-white back-black" value="リセット" ><button class="btn font-white back-gray book-add">登録</button><a class="pull-right btn" data-closemodal="ModalWindow2">閉じる</a>
+	                </footer>
+	            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script language="JavaScript">
+function clearText(){
+     document.getElementById('comment').value = "";
+};
+$(function(){
+    $("#acMenu dt").on("click", function() {
+        $(this).prev().slideToggle();
     });
+});
 </script>
+<% end %>

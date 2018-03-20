@@ -15,11 +15,6 @@ helpers do
     end
 end
 
-before '/books' do
-    if current_user.nil?
-        redirect '/'
-    end
-end
 
 get '/' do
     if current_user.nil?
@@ -98,10 +93,6 @@ post '/user/edit' do
     redirect '/'
 end
 
-get '/books/new' do
-    erb :new
-end
-
 post '/books' do
     list = List.find(params[:list])
     if Date.valid_date?(params[:year].to_i, params[:month].to_i, params[:day].to_i)
@@ -113,7 +104,11 @@ post '/books' do
             comment: params[:comment],
             list_id: list.id
         )
-        redirect '/'
+        book_ids = Array.new(Book.had_by(current_user).ids)
+        book_date = Book.find(book_ids.last).date
+        content_type :json
+        data = {id: book_ids.last, date: book_date}
+        data.to_json
     else
         redirect '/books/new'
     end
@@ -177,10 +172,6 @@ get '/list/:id' do
     erb :index
 end
 
-get '/lists/new' do
-    erb :new_list
-end
-
 get '/list/:id/delete' do
     list = List.find(params[:id])
     list.destroy
@@ -194,5 +185,8 @@ post '/lists' do
     current_user.lists.create(
         name: params[:name]
     )
-    redirect '/'
+    list_ids = Array.new(List.had_by(current_user).ids)
+    content_type :json
+    data = {id: list_ids.last}
+    data.to_json
 end
