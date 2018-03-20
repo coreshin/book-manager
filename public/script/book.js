@@ -18,7 +18,7 @@ $(function(){
             success: function(json) {
                 console.log('add new list')
                 $('li#new-list').before('<li class="list-group-item book-list" data-id="'+ json.id + '"><a class="sentence" href="/list/'+ json.id + '">' + listName + '</a><i class="fa fa-times-circle list-delete" data-id="'+ json.id + '"></i></li>');
-                $('#ModalWindow1').trigger('close')
+                $('#ModalWindow1').trigger('close');
             }
         });
     }),
@@ -62,7 +62,7 @@ $(function(){
             success: function(json) {
                 console.log('add new book')
                 $('.new-post').before('<div class="panel-body post" data-id="' + json.id + '"><div class="post-button"><a class="heart hvr-grow" data-id="'+ json.id + '" style="color:#848484;"><i class="fa fa-heart"></i></a><a class="book-edit" aria-pressed="true" href="/books/' + json.id + '/edit"><i class="fa fa-pencil-square-o"></i></a><a class="book-delete" aria-pressed="true" data-id="' + json.id + '"><i class="fa fa-times"></i></a></div><h3>' + bookTitle + '<br><small class="sentence text-muted left-dash">' + bookAuthor + '</small></h3><blockquote class="blockquote sentence" style="border: none;"><p class="sentence">' +mult(bookRate,'<span class="rate-star">★</span>') + '</p><p class="mb-0">' + bookComment.replace("\n","<br/>") + '</p><p class="text-muted">' + json.date + '</p></blockquote></div>');
-                $('#ModalWindow2').trigger('close')
+                $('#ModalWindow2').trigger('close');
             }
         });
     }),
