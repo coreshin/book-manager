@@ -1,27 +1,25 @@
-<div class="container">
-    <div class="panel panel-default">
-    	<div class="panel-heading header-grey">
+<div class="container" role="main">
+    <section class="panel panel-default">
+    	<header class="panel-heading header-grey">
     	    <h4>新規登録</h4>
-    	</div>
+    	</header>
     	<div class="panel-body">
             <form action="/signup" method="post">
-                <div class="controls">
-                    <div class="form-group sentence">
-                        <p><label>ユーザー名とパスワードを入力してください。</label></p>
-                        <p><input class="form-control" name="name" placeholder="名前を入力"></p>
-                        <p><input class="form-control" name="password" type="password" placeholder="パスワードを入力"></p>
-                        <small class="description">※パスワードは5~10文字の半角英数字にしてください。</small>
-                        </div>
-                    <div class="form-group sentence">
-                        <p><label>パスワードを再入力してください。</label></p>
-                        <p><input class="form-control" name="password_confirmation" type="password" placeholder="パスワードをもう一度入力"></p>
-                    </div>
-                    <div>
-                        <input type="submit" class="btn" style="background-color: #AAAAAA; color: white;" value="登録">
-                    </div>
+                <div class="form-group sentence">
+                    <div><label>ユーザー名とパスワードを入力してください。</label></div>
+                    <div><input class="form-control" name="name" placeholder="名前を入力"></div>
+                    <div><input class="form-control" name="password" type="password" placeholder="パスワードを入力"></div>
+                    <div><small class="description">※パスワードは5~10文字の半角英数字にしてください。</small></div>
                 </div>
+                <div class="form-group sentence">
+                    <div><label>パスワードを再入力してください。</label></div>
+                    <div><input class="form-control" name="password_confirmation" type="password" placeholder="パスワードを再入力"></div>
+                </div>
+                <footer class="form-footer">
+                    <input type="submit" class="btn" style="background-color: #AAAAAA; color: white;" value="登録">
+                </footer>
             </form>
     	</div>
-    </div>
+    </section>
 </div>
 <div class="footer-spacing"></div>
