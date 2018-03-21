@@ -20,7 +20,6 @@
     <meta name="twitter:description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。" />
     <meta name="twitter:text:title" content="ブックマネージャー（仮）" />
    
-    <meta name="google-site-verification" content="lcnFuAMvAumdSZo1YcvkoQukpUiBfHO8gqjTpNyKSdI" />
     <script type="application/ld+json">
             {
                   "@context" : "http://schema.org",
@@ -59,7 +58,7 @@
     <nav class="navbar navbar-default">
         <div class="container">
             <div class="page-header" style="border: none;">
-                <a href="/"><img src="/img/logo.png" id="logo" width="50%" heigth="50%"></a>
+                <a href="/"><img src="/img/logo.png" alt="logo.png" id="logo" width="50%" heigth="50%"></a>
             </div>
             <p class="nav navbar-nav navbar-left font-white serif nav-lead">あなたのための、読書記録（仮）</p>    
             <ul class="nav navbar-nav navbar-right ">
@@ -76,17 +75,20 @@
         </div>
     </nav>
     <%= yield %>
-    <div class="footer-spacing"></div>
     <footer class="footer-distributed">
 		<div class="footer-right">
 		    <div class="footer-right-up">
 			</div>
 			<a class="hvr-grow" href="//twitter.com/manage_book"><i class="fa fa-twitter"></i></a>
 			<a class="hvr-grow" href="//github.com/coreshin"><i class="fa fa-github"></i></a>
+			<a class="hvr-grow" href="mailto:book.manager.kari@gmail.com"><i class="fa fa-envelope"></i></a>
 		</div>
 		<div class="footer-left">
 			<p class="footer-links">
-				<a class="hvr-grow" href="/">Home</a>·<a class="hvr-grow" href="mailto:book.manager.kari@gmail.com">Contact</a>
+				<a class="hvr-grow" href="/">Home</a>
+				·<a class="hvr-grow" href="https://goo.gl/forms/7AiS5qRPK4lNbul93">Contact</a>
+				·<a class="hvr-grow" href="/signin">Signin</a>
+				·<a class="hvr-grow" href="/signup">Signup</a>
 			</p>
 			<p>coreshin &copy; 2017</p>
 		</div>
