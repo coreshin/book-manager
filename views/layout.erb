@@ -1,28 +1,49 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
     <meta charset="utf-8">
     <title>ブックマネージャー（仮）</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <meta name="description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です、不具合が存在します。">
-    <meta name="author" content="coreshin">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta property="og:url" content="https://book-manager-kari.herokuapp.com" />
+    <meta property="og:image" content="https://book-manager-kari.herokuapp.com/img/thumbnail.png" />
+    <meta property="og:site_name" content="ブックマネージャー(仮)" />
+    <meta property="og:description" content="" />
     <meta name="google-site-verification" content="lcnFuAMvAumdSZo1YcvkoQukpUiBfHO8gqjTpNyKSdI" />
+    <meta name="twitter:card" content="summary large image" />
+    <script type="application/ld+json">
+            {
+                  "@context" : "http://schema.org",
+                  "@type" : "SoftwareApplication",
+                  "name" : "ブックマネージャー(仮)",
+                  "image" : "https://book-manager-kari.herokuapp.com/img/library.jpg",
+                  "creator" : {
+                    "@type" : "Person",
+                    "name" : "coreshin"
+                  },
+                  "datePublished" : "2018-2-26",
+                  "applicationCategory" : "Book Reviewer",
+                  "softwareVersion" : "beta",
+                  "copyrightYear":"2018",
+                  "inLanguage":"Japanese",
+                  "url":"https://book-manager-kari.herokuapp.com",
+            }
+    </script>
     
     <link rel="stylesheet" href="/assets/css/book.css">
     <link rel="stylesheet" href="/assets/css/footer-distributed.css">
     <link rel="stylesheet" href="/assets/css/hover.css" media="all">
     <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css"/>
-    
-    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-    
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
-	<script src="/script/book.js"></script>
-	<script src="/script/modal.js"></script>
+	<script type="text/javascript" src="/script/book.js"></script>
+	<script type="text/javascript" src="/script/modal.js"></script>
 	<script type="text/javascript" src="/script/cropperImg.js"></script>
 </head>
 <body>
@@ -56,13 +77,7 @@
 		</div>
 		<div class="footer-left">
 			<p class="footer-links">
-				<a class="hvr-grow" href="/">Home</a>
-				<!--·-->
-				<!--<a class="hvr-grow" href="">Blog</a>-->
-				<!--·-->
-				<!--<a class="hvr-grow" href="#">About</a>-->
-				·
-				<a class="hvr-grow" href="mailto:book.manager.kari@gmail.com">Contact</a>
+				<a class="hvr-grow" href="/">Home</a>·<a class="hvr-grow" href="mailto:book.manager.kari@gmail.com">Contact</a>
 			</p>
 			<p>coreshin &copy; 2017</p>
 		</div>

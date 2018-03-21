@@ -87,7 +87,9 @@
 						</div>
 					<% else %>
 						<% @books.each do |book| %>
-					    <div class="panel-body post" data-id="<%= book.id %>">
+					    <div class="panel-body post" data-id="<%= book.id %>" itemscope itemtype="http://schema.org/Review">
+					    	<span itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="<%= current_user.name %>"></span>
+					    	<meta itemprop="datePublished" content="<%= book.date %>">
 					    	<div class="post-button">
 					    		<% if book.star %>
 								<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#e0245e;"><i class="fa fa-heart"></i></a>
@@ -97,12 +99,21 @@
 								<a class="book-edit" aria-pressed="true" href="/books/<%= book.id %>/edit"><i class="fa fa-pencil-square-o"></i></a>
 								<a class="book-delete" aria-pressed="true" data-id="<%= book.id %>"><i class="fa fa-times"></i></a>
 					    	</div>
-					    	<h3><%= CGI.escapeHTML(book.title) %><br>
-					    	<small class="sentence text-muted left-dash"><%= CGI.escapeHTML(book.author) %></small></h3>
+					    	<div itemprop="itemreviewed" itemscope itemtype="http://schema.org/Book">
+						    	<h3 itemprop="name"><%= CGI.escapeHTML(book.title) %></h3>
+						    	<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+									<small class="sentence text-muted left-dash" itemprop="name"><%= CGI.escapeHTML(book.author) %></small>
+								</span>
+					    	</div>
 						    <blockquote class="blockquote sentence" style="border: none;">
-						    	<p class="sentence"><span class="rate-star"><%= '★</span><span class="rate-star">' * book.rate %></span></p>
-								<p class="mb-0"><%= CGI.escapeHTML(book.comment).gsub("\n","<br/>") %></p>
-								<p class="text-muted"><%= book.date %></p>
+						    	<span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating"> 
+									<meta itemprop="worstRating" content="0"> 
+									<meta itemprop="bestRating" content="5">
+									<meta itemprop="ratingValue" content="<%= book.rate %>">
+									<p class="sentence"><%= '<span class="rate-star">★</span>' * book.rate %></span></p>
+								</span>
+						    	<p itemprop="comment"><%= CGI.escapeHTML(book.comment).gsub("\n","<br/>") %></p>
+								<p class="text-muted" itemprop="dateCreated"><%= book.date %></p>
 							</blockquote>
 					    </div>
 					    <% end %>
