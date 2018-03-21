@@ -9,7 +9,7 @@
                 <div class="form-group sentence">
                     <div><label>書名</label><input type="text" name="title" value="<%= CGI.escapeHTML(@book.title) %>"></div>
                     <div><label>著者</label><inputtype="text" name="author" value="<%= CGI.escapeHTML(@book.author) %>"></div>
-                    <div><label>読了日</label><input type="text" name="date" value="<%= @book.date %>"></p>
+                    <div><label>読了日</label><input type="text" name="date" value="<%= @book.date %>"></div>
                     <div class="book-rate"><label>評価(1~5)</label><span class="description">1</span><input class="input-range" type="range" value="<%= @book.rate %>" min="1" max="5" name="rate"><span class="description">5</span></div>
                     <div class="form-group">
                         <label>コメント</label><button class="btn btn-outline-dark pull-right" onClick="clearText( )">クリア</button>
