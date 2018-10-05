@@ -10,183 +10,183 @@ require 'tempfile'
 enable :sessions
 
 helpers do
-    def current_user
-        User.find_by(id: session[:user]) 
-    end
+	def current_user
+		User.find_by(id: session[:user]) 
+	end
 end
 
 
 get '/' do
-    if current_user.nil?
-        @books = Book.none
-        @lists = List.none
-    else
-        @books = Book.had_by(current_user)
-        @lists = List.had_by(current_user)
-        @title = '全ての投稿'
-    end
-    erb :index
+	if current_user.nil?
+		@books = Book.none
+		@lists = List.none
+	else
+		@books = Book.had_by(current_user)
+		@lists = List.had_by(current_user)
+		@title = '全ての投稿'
+	end
+	erb :index
 end
 
 get '/index' do
-    erb :index
+	erb :index
 end
 
 get '/signup' do
-    erb :sign_up
+	erb :sign_up
 end
 
 post '/signup' do
-    user = User.create(
-       name: params[:name],
-       password: params[:password],
-       password_confirmation: params[:password_confirmation]
-       )
-       user.lists.create(name: "小説")
-       user.lists.create(name: "実用書")
-       user.lists.create(name: "漫画")
-    if user.persisted?
-        session[:user] = user.id
-    end
-    redirect '/'
+	user = User.create(
+	   name: params[:name],
+	   password: params[:password],
+	   password_confirmation: params[:password_confirmation]
+	   )
+	   user.lists.create(name: "小説")
+	   user.lists.create(name: "実用書")
+	   user.lists.create(name: "漫画")
+	if user.persisted?
+		session[:user] = user.id
+	end
+	redirect '/'
 end
 
 get '/signin' do
-    erb :sign_in
+	erb :sign_in
 end
 
 post '/singin' do
-    user = User.find_by(name: params[:name])
-    if user && user.authenticate(params[:password])
-       session[:user] = user.id
-    end
-    redirect '/'
+	user = User.find_by(name: params[:name])
+	if user && user.authenticate(params[:password])
+	   session[:user] = user.id
+	end
+	redirect '/'
 end
 
 get '/signout' do
-    session[:user] = nil
-    redirect '/'
+	session[:user] = nil
+	redirect '/'
 end
 
 #ここからアプリの中身
 
 get '/user/edit' do
-    erb :user_edit
+	erb :user_edit
 end
 
 post '/user/edit' do
-    user = current_user
-    
-    user.name = params[:name]
-    user.description = params[:description]
-    auth = {
-    cloud_name: "dkbvz4tou",
-    api_key:    "687247844292951",
-    api_secret: "VUJLyQ0Hn_qWjnoXFOafUTtlblA"
-    }
-    w = Tempfile.open
-    original = Base64.urlsafe_decode64(params[:image].split(',').last)
-    w.write(original)
-    user.image = Cloudinary::Uploader.upload(w.path, auth)['secure_url']
-    user.save
-    w.close
-    redirect '/'
+	user = current_user
+	
+	user.name = params[:name]
+	user.description = params[:description]
+	auth = {
+	cloud_name: "dkbvz4tou",
+	api_key:    "687247844292951",
+	api_secret: "VUJLyQ0Hn_qWjnoXFOafUTtlblA"
+	}
+	w = Tempfile.open
+	original = Base64.urlsafe_decode64(params[:image].split(',').last)
+	w.write(original)
+	user.image = Cloudinary::Uploader.upload(w.path, auth)['secure_url']
+	user.save
+	w.close
+	redirect '/'
 end
 
 post '/books' do
-    list = List.find(params[:list])
-    if Date.valid_date?(params[:year].to_i, params[:month].to_i, params[:day].to_i)
-        current_user.books.create(
-            title: params[:title],
-            author: params[:author],
-            date: Date.parse(params[:year]+"-"+params[:month]+"-"+params[:day]),
-            rate: params[:rate],
-            comment: params[:comment],
-            list_id: list.id
-        )
-        book_ids = Array.new(Book.had_by(current_user).ids)
-        book_date = Book.find(book_ids.last).date
-        content_type :json
-        data = {id: book_ids.last, date: book_date}
-        data.to_json
-    else
-        redirect '/books/new'
-    end
+	list = List.find(params[:list])
+	if Date.valid_date?(params[:year].to_i, params[:month].to_i, params[:day].to_i)
+		current_user.books.create(
+			title: params[:title],
+			author: params[:author],
+			date: Date.parse(params[:year]+"-"+params[:month]+"-"+params[:day]),
+			rate: params[:rate],
+			comment: params[:comment],
+			list_id: list.id
+		)
+		book_ids = Array.new(Book.had_by(current_user).ids)
+		book_date = Book.find(book_ids.last).date
+		content_type :json
+		data = {id: book_ids.last, date: book_date}
+		data.to_json
+	else
+		redirect '/books/new'
+	end
 end
 
 get '/book/:id/delete' do
-    book = Book.find(params[:id])
-    book.destroy
-    content_type :json
-    data = {}
-    data.to_json
+	book = Book.find(params[:id])
+	book.destroy
+	content_type :json
+	data = {}
+	data.to_json
 end
 
 get '/books/:id/star' do
-    book = Book.find(params[:id])
-    book.star = !book.star
-    book.save
-    content_type :json
-    data = {star: book.star}
-    data.to_json
+	book = Book.find(params[:id])
+	book.star = !book.star
+	book.save
+	content_type :json
+	data = {star: book.star}
+	data.to_json
 end
 
 get '/books/:id/edit' do
-    @book = Book.find(params[:id])
-    @list = List.had_by(current_user)
-    erb :edit
+	@book = Book.find(params[:id])
+	@list = List.had_by(current_user)
+	erb :edit
 end
 
 post '/books/:id' do                                                            
-    book = Book.find(params[:id])
-    list = List.find(params[:list])
-    date = params[:date].split('-')
-    
-    if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
-        book.title = CGI.escapeHTML(params[:title])
-        book.author = params[:author]
-        book.date = Date.parse(params[:date])
-        book.rate = params[:rate]
-        book.comment = params[:comment]
-        # ¥n -> <br>
-        book.list_id = list.id
-        book.save
-        redirect '/'
-    else
-        redirect '/books/#{book.id}/edit'
-    end
+	book = Book.find(params[:id])
+	list = List.find(params[:list])
+	date = params[:date].split('-')
+	
+	if Date.valid_date?(date[0].to_i, date[1].to_i, date[2].to_i)
+		book.title = CGI.escapeHTML(params[:title])
+		book.author = params[:author]
+		book.date = Date.parse(params[:date])
+		book.rate = params[:rate]
+		book.comment = params[:comment]
+		# ¥n -> <br>
+		book.list_id = list.id
+		book.save
+		redirect '/'
+	else
+		redirect '/books/#{book.id}/edit'
+	end
 end
 
 get '/books/star' do
-    @lists = List.had_by(current_user)
-    @books = current_user.books.where(star: [true])
-    @title = 'お気に入り'
-    erb :index
+	@lists = List.had_by(current_user)
+	@books = current_user.books.where(star: [true])
+	@title = 'お気に入り'
+	erb :index
 end
 
 get '/list/:id' do
-    @lists = List.had_by(current_user)
-    list = List.find(params[:id])
-    @books = list.books.had_by(current_user)
-    @title = list.name
-    erb :index
+	@lists = List.had_by(current_user)
+	list = List.find(params[:id])
+	@books = list.books.had_by(current_user)
+	@title = list.name
+	erb :index
 end
 
 get '/list/:id/delete' do
-    list = List.find(params[:id])
-    list.destroy
-    content_type :json
-    data = {}
-    data.to_json
+	list = List.find(params[:id])
+	list.destroy
+	content_type :json
+	data = {}
+	data.to_json
 end
 
 
 post '/lists' do
-    current_user.lists.create(
-        name: params[:name]
-    )
-    list_ids = Array.new(List.had_by(current_user).ids)
-    content_type :json
-    data = {id: list_ids.last}
-    data.to_json
+	current_user.lists.create(
+		name: params[:name]
+	)
+	list_ids = Array.new(List.had_by(current_user).ids)
+	content_type :json
+	data = {id: list_ids.last}
+	data.to_json
 end

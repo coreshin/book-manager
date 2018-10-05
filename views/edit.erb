@@ -1,42 +1,42 @@
 <div class="container" role="main">
-    <section class="panel panel-default body">
-    	<i data-closemodal="ModalWindow2" class="fa fa-times-circle modal-close"></i>
-    	<header class="panel-heading header-grey">
-    		<h4>編集</h4>
-    	</header>
-        <div class="panel-body">
-    	    <form action="/books/<%= @book.id %>" method="post">
-                <div class="form-group sentence">
-                    <div><label>書名</label><input type="text" name="title" value="<%= CGI.escapeHTML(@book.title) %>"></div>
-                    <div><label>著者</label><inputtype="text" name="author" value="<%= CGI.escapeHTML(@book.author) %>"></div>
-                    <div><label>読了日</label><input type="text" name="date" value="<%= @book.date %>"></div>
-                    <div class="book-rate"><label>評価(1~5)</label><span class="description">1</span><input class="input-range" type="range" value="<%= @book.rate %>" min="1" max="5" name="rate"><span class="description">5</span></div>
-                    <div class="form-group">
-                        <label>コメント</label><button class="btn btn-outline-dark pull-right" onClick="clearText( )">クリア</button>
-                        <textarea class="comment" name="comment" id="comment"><%= CGI.escapeHTML(@book.comment) %></textarea>
-                    </div>
-                    <div>
-                        <label>ジャンル</label>
-                        <select class="" name="list">
-                        <% List.had_by(current_user).each do |list| %>
-                            <option value="<%= list.id %>">
-                                <% if list.id == @book.list.id %>
-                                    ✓
-                                <% end %>
-                                <%= list.name %>
-                            </option>
-                        <% end %>
-                        </select>
-                    </div>
-                </div>
-                <footer class="form-footer">
-                    <input type="reset" class="btn font-white back-black" value="リセット" >
-                    <input type="submit" class="btn font-white back-gray" value="登録">
-                    <a class="pull-right btn" href="/">戻る</a>
-                </footer>
-            </form>
-    	</div>
-    </section>
+	<section class="panel panel-default body">
+		<i data-closemodal="ModalWindow2" class="fa fa-times-circle modal-close"></i>
+		<header class="panel-heading header-grey">
+			<h4>編集</h4>
+		</header>
+			<div class="panel-body">
+				<form action="/books/<%= @book.id %>" method="post">
+					<div class="form-group sentence">
+						<div><label>書名</label><input type="text" name="title" value="<%= CGI.escapeHTML(@book.title) %>"></div>
+						<div><label>著者</label><inputtype="text" name="author" value="<%= CGI.escapeHTML(@book.author) %>"></div>
+						<div><label>読了日</label><input type="text" name="date" value="<%= @book.date %>"></div>
+						<div class="book-rate"><label>評価(1~5)</label><span class="description">1</span><input class="input-range" type="range" value="<%= @book.rate %>" min="1" max="5" name="rate"><span class="description">5</span></div>
+						<div class="form-group">
+							<label>コメント</label><button class="btn btn-outline-dark pull-right" onClick="clearText( )">クリア</button>
+							<textarea class="comment" name="comment" id="comment"><%= CGI.escapeHTML(@book.comment) %></textarea>
+						</div>
+						<div>
+							<label>ジャンル</label>
+							<select class="" name="list">
+							<% List.had_by(current_user).each do |list| %>
+								<option value="<%= list.id %>">
+									<% if list.id == @book.list.id %>
+											✓
+									<% end %>
+									<%= list.name %>
+								</option>
+							<% end %>
+							</select>
+						</div>
+					</div>
+					<footer class="form-footer">
+							<input type="reset" class="btn font-white back-black" value="リセット" >
+							<input type="submit" class="btn font-white back-gray" value="登録">
+							<a class="pull-right btn" href="/">戻る</a>
+					</footer>
+				</form>
+		</div>
+	</section>
 </div>
 <script language="JavaScript">
 function clearText(){document.getElementById('comment').value = "";};

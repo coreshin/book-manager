@@ -46,20 +46,20 @@
 					<div class="form-group sentence">
 						<span><label class="user-name">
 							<% if current_user.image.nil? %>
-	                			<img src="/img/default-profile.jpg" class="icon">
-	                		<% else %>
-	                			<img src="<%= current_user.image %>" class="icon">
-	                		<% end %>
-                    	</label><%= current_user.name %></span>
+												<img src="/img/default-profile.jpg" class="icon">
+											<% else %>
+												<img src="<%= current_user.image %>" class="icon">
+											<% end %>
+											</label><%= current_user.name %></span>
 						<p><label>読んだ本</label><%= Book.had_by(current_user).count %>冊</p>
 						<P><label>カテゴリー</label><%= @lists.count %>個</P>
 						<dl class="acMenu">
 							<dd>
-						    	<p><label>ユーザー名</label><%= current_user.name%></p>
-		                    	<p><label>ユーザーID</label><%= current_user.id%></p>
-		                    	<p><label>このユーザーについて</label><br><%= current_user.description %></p>
-		                    	<a href="/user/edit"><i class="fa fa-cog"></i> 設定</a>
-					    	</dd>
+									<p><label>ユーザー名</label><%= current_user.name%></p>
+													<p><label>ユーザーID</label><%= current_user.id%></p>
+													<p><label>このユーザーについて</label><br><%= current_user.description %></p>
+													<a href="/user/edit"><i class="fa fa-cog"></i> 設定</a>
+								</dd>
 							<dt>詳細</dt>
 						</dl>
 						<footer><a href="/signout" class="btn back-black font-white sans-serif" role="button" aria-pressed="true">ログアウト</a></footer>
@@ -93,18 +93,18 @@
 			<% else %>
 				<% @books.each do |book| %>
 				<article class="panel-body post" data-id="<%= book.id %>" itemscope itemtype="http://schema.org/Review">
-			    	<span class="post-button">
-			    	<% if book.star %>
+						<span class="post-button">
+						<% if book.star %>
 						<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#e0245e;"><i class="fa fa-heart"></i></a>
 					<% else %>
 						<a class="heart hvr-grow" data-id="<%= book.id %>" style="color:#848484;"><i class="fa fa-heart"></i></a>
 					<% end %>
 						<a class="book-edit" aria-pressed="true" href="/books/<%= book.id %>/edit"><i class="fa fa-pencil-square-o"></i></a>
 						<a class="book-delete" aria-pressed="true" data-id="<%= book.id %>"><i class="fa fa-times"></i></a>
-			    	</span>
-			    	<section itemprop="itemreviewed" itemscope itemtype="http://schema.org/Book">
-				    	<h3 itemprop="name"><%= CGI.escapeHTML(book.title) %></h3>
-				    	<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+						</span>
+						<section itemprop="itemreviewed" itemscope itemtype="http://schema.org/Book">
+							<h3 itemprop="name"><%= CGI.escapeHTML(book.title) %></h3>
+							<span itemprop="author" itemscope itemtype="http://schema.org/Person">
 							<small class="sentence text-muted left-dash" itemprop="name"><%= CGI.escapeHTML(book.author) %></small>
 						</span>
 					</section>
@@ -120,126 +120,126 @@
 						<meta itemprop="datePublished" content="<%= book.date %>">
 						<span itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="<%= current_user.name %>"></span>
 					</section>
-			    </article>
+					</article>
 				<% end %>
-    		<% end %>
+				<% end %>
 				<footer class="panel-body new-post">
 					<a data-openmodal="ModalWindow2" class="btn back-black font-white" role="button">新たに読んだ本</a>
-			    </footer>
+					</footer>
 			</section>
 		</main>
 	</div>
 </div>
 <!--モーダルウィンドウ-->
 <div id="ModalWindow1" class="modalwindow">
-    <section class="panel panel-default body">
+	<section class="panel panel-default body">
 		<i data-closemodal="ModalWindow1" class="fa fa-times-circle modal-close"></i>
-        <header class="panel-heading header-grey">
+		<header class="panel-heading header-grey">
 			<h4>カテゴリーを追加</h4>
-        </header>
-        <div class="panel-body">
-            <div class="form-group sentence">
-                <labe>新しいカテゴリー</labe>
-                <input type="text" name="name"><br>
-            </div>
-            <footer class="form-footer">
-            	<a class="btn font-white back-gray list-add" role="button" aria-pressed="false">登録</a>
-            	<a class="pull-right btn" data-closemodal="ModalWindow1" role="button">閉じる</a>
-            </footer>
-        </div>
-    </section>
+		</header>
+		<div class="panel-body">
+			<div class="form-group sentence">
+				<labe>新しいカテゴリー</labe>
+				<input type="text" name="name"><br>
+			</div>
+			<footer class="form-footer">
+				<a class="btn font-white back-gray list-add" role="button" aria-pressed="false">登録</a>
+				<a class="pull-right btn" data-closemodal="ModalWindow1" role="button">閉じる</a>
+			</footer>
+		</div>
+		</section>
 </div>
 <div id="ModalWindow2" class="modalwindow">
-    <section class="panel panel-default body">
-    	<i data-closemodal="ModalWindow2" class="fa fa-times-circle modal-close"></i>
-    	<header class="panel-heading header-grey">
-    		<h4>新しく読んだ本</h4>
-    	</header>
-    	<div class="panel-body">
-            <div class="form-group sentence">
-                <div><label>書名</label><input type="text" name="title"></div>
-                <div><label>著者</label><input type="text" name="author"></div>
-                <div class="row form-group">
-                    <div class="col-sm-2"><label>読了日</label></div>
-                    <div class="col-sm-2">
-                        <select class="year" name="year">
-                            <option value="2018">2018</option>
-                            <option value="2019">2019</option>
-                            <option value="2020">2020</option>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <select class="month" name="month">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>>
-                        </select>
-                    </div>
-                    <div class="col-sm-2">
-                        <select class="day" name="day">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                            <option value="21">21</option>
-                            <option value="22">22</option>
-                            <option value="23">23</option>
-                            <option value="24">24</option>
-                            <option value="25">25</option>
-                            <option value="26">26</option>
-                            <option value="27">27</option>
-                            <option value="28">28</option>
-                            <option value="29">29</option>
-                            <option value="30">30</option>
-                            <option value="31">31</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="book-rate"><label>評価(1~5)</label><span class="description">1</span><input class="input-range" type="range" min="1" max="5" name="rate"><span class="description">5</span></div>
-                <div class="form-group">
-                    <label>コメント</label><button class="btn-outline-dark btn pull-right" onClick="clearText( )">クリア</button>
-                    <textarea class="comment" name="comment" id="comment"></textarea>
-                </div>
-                <div>
-                	<label>ジャンル</label>
-                	<select name="list">
-                    <% List.had_by(current_user).each do |list| %>
-                        <option value="<%= list.id %>"><%= list.name %></option>
-                    <% end %>
-                    </select>
-                </div>
-            </div>
-            <footer class="form-footer">
-                <a class="btn font-white back-gray book-add" role="button" aria-pressed="false">登録</a>
-                <a class="pull-right btn" data-closemodal="ModalWindow2" role="button">閉じる</a>
-            </footer>
-        </div>
-    </section>
+	<section class="panel panel-default body">
+		<i data-closemodal="ModalWindow2" class="fa fa-times-circle modal-close"></i>
+		<header class="panel-heading header-grey">
+			<h4>新しく読んだ本</h4>
+		</header>
+		<div class="panel-body">
+			<div class="form-group sentence">
+				<div><label>書名</label><input type="text" name="title"></div>
+				<div><label>著者</label><input type="text" name="author"></div>
+				<div class="row form-group">
+					<div class="col-sm-2"><label>読了日</label></div>
+					<div class="col-sm-2">
+						<select class="year" name="year">
+							<option value="2018">2018</option>
+							<option value="2019">2019</option>
+							<option value="2020">2020</option>
+						</select>
+					</div>
+					<div class="col-sm-2">
+						<select class="month" name="month">
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+								<option value="5">5</option>
+								<option value="6">6</option>
+								<option value="7">7</option>
+								<option value="8">8</option>
+								<option value="9">9</option>
+								<option value="10">10</option>
+								<option value="11">11</option>
+								<option value="12">12</option>>
+							</select>
+					</div>
+					<div class="col-sm-2">
+						<select class="day" name="day">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+							<option value="9">9</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+							<option value="13">13</option>
+							<option value="14">14</option>
+							<option value="15">15</option>
+							<option value="16">16</option>
+							<option value="17">17</option>
+							<option value="18">18</option>
+							<option value="19">19</option>
+							<option value="20">20</option>
+							<option value="21">21</option>
+							<option value="22">22</option>
+							<option value="23">23</option>
+							<option value="24">24</option>
+							<option value="25">25</option>
+							<option value="26">26</option>
+							<option value="27">27</option>
+							<option value="28">28</option>
+							<option value="29">29</option>
+							<option value="30">30</option>
+							<option value="31">31</option>
+						</select>
+					</div>
+				</div>
+				<div class="book-rate"><label>評価(1~5)</label><span class="description">1</span><input class="input-range" type="range" min="1" max="5" name="rate"><span class="description">5</span></div>
+				<div class="form-group">
+					<label>コメント</label><button class="btn-outline-dark btn pull-right" onClick="clearText( )">クリア</button>
+					<textarea class="comment" name="comment" id="comment"></textarea>
+				</div>
+				<div>
+					<label>ジャンル</label>
+					<select name="list">
+						<% List.had_by(current_user).each do |list| %>
+								<option value="<%= list.id %>"><%= list.name %></option>
+						<% end %>
+						</select>
+				</div>
+			</div>
+			<footer class="form-footer">
+				<a class="btn font-white back-gray book-add" role="button" aria-pressed="false">登録</a>
+				<a class="pull-right btn" data-closemodal="ModalWindow2" role="button">閉じる</a>
+			</footer>
+		</div>
+	</section>
 </div>
 <script language="JavaScript">
 function clearText(){document.getElementById('comment').value = "";};

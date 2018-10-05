@@ -1,96 +1,94 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116155718-1"></script>
-    <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-116155718-1');
-</script>
-    <meta charset="utf-8">
-    <title>ブックマネージャー（仮）</title>
-    <link rel="shortcut icon" href="/favicon.ico">
-    <meta name="description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    
-    <meta property="og:url" content="https://book-manager-kari.herokuapp.com" />
-    <meta property="og:title" content="ブックマネージャー（仮）" />
-    <meta property="og:site_name" content="ブックマネージャー（仮）" />
-    <meta property="og:image" content="https://book-manager-kari.herokuapp.com/img/thumbnail.png" />
-    <meta property="og:description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。" />
-   
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:creator" content="@corekato" />
-    <meta name="twitter:site" content="@manage_book" />
-    <meta name="twitter:title" content="ブックマネージャー（仮）" />
-    <meta name="twitter:description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。" />
-    <meta name="twitter:text:title" content="ブックマネージャー（仮）" />
-   
-    <script type="application/ld+json">
-            {
-                  "@context" : "http://schema.org",
-                  "@type" : "SoftwareApplication",
-                  "name" : "ブックマネージャー(仮)",
-                  "image" : "https://book-manager-kari.herokuapp.com/img/library.jpg",
-                  "creator" : {
-                    "@type" : "Person",
-                    "name" : "coreshin"
-                  },
-                  "datePublished" : "2018-2-26",
-                  "applicationCategory" : "Book Reviewer",
-                  "softwareVersion" : "beta",
-                  "copyrightYear":"2018",
-                  "inLanguage":"Japanese",
-                  "url":"https://book-manager-kari.herokuapp.com",
-            }
-    </script>
-    
-    <link rel="stylesheet" href="/assets/css/book.css">
-    <link rel="stylesheet" href="/assets/css/footer-distributed.css">
-    <link rel="stylesheet" href="/assets/css/hover.css" media="all">
-    <link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
-
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-116155718-1"></script>
+	<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', 'UA-116155718-1');
+	</script>
+	<meta charset="utf-8">
+	<title>ブックマネージャー（仮）</title>
+	<link rel="shortcut icon" href="/favicon.ico">
+	<meta name="description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。">
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	<meta property="og:url" content="https://book-manager-kari.herokuapp.com" />
+	<meta property="og:title" content="ブックマネージャー（仮）" />
+	<meta property="og:site_name" content="ブックマネージャー（仮）" />
+	<meta property="og:image" content="https://book-manager-kari.herokuapp.com/img/thumbnail.png" />
+	<meta property="og:description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。" />
+ 
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:creator" content="@corekato" />
+	<meta name="twitter:site" content="@manage_book" />
+	<meta name="twitter:title" content="ブックマネージャー（仮）" />
+	<meta name="twitter:description" content="あなたのための読書記録。読んだ本を記録することができるWEBアプリです。現在開発中です。" />
+	<meta name="twitter:text:title" content="ブックマネージャー（仮）" />
+	<script type="application/ld+json">
+					{
+								"@context" : "http://schema.org",
+								"@type" : "SoftwareApplication",
+								"name" : "ブックマネージャー(仮)",
+								"image" : "https://book-manager-kari.herokuapp.com/img/library.jpg",
+								"creator" : {
+									"@type" : "Person",
+									"name" : "coreshin"
+								},
+								"datePublished" : "2018-2-26",
+								"applicationCategory" : "Book Reviewer",
+								"softwareVersion" : "beta",
+								"copyrightYear":"2018",
+								"inLanguage":"Japanese",
+								"url":"https://book-manager-kari.herokuapp.com",
+					}
+	</script>
+	
+	<link rel="stylesheet" href="/assets/css/book.css">
+	<link rel="stylesheet" href="/assets/css/footer-distributed.css">
+	<link rel="stylesheet" href="/assets/css/hover.css" media="all">
+	<link rel="stylesheet" type="text/css" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.css"/>
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+	
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
+	<script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cropper/1.0.0/cropper.min.js"></script>
 	<script type="text/javascript" src="/script/book.js"></script>
 	<script type="text/javascript" src="/script/modal.js"></script>
 	<script type="text/javascript" src="/script/cropperImg.js"></script>
 </head>
 <body>
-    <header class="main-header" role="banner">
-        <div class="page-header" style="border: none;">
-            <a href="/"><img src="/img/logo.png" alt="logo.png" id="logo" width="50%" heigth="50%"></a>
-        </div>
-        <p class="pull-left header-lead font-white serif">あなたのための、読書記録（仮）</p>    
-        <nav class="navbar navbar-default">
-            <ul class="nav navbar-nav">
-            <% if !current_user.nil? %>
-                <li class="nav-spacing"></li>
-            <% else %>
-                <li class="font-white"><h4>新規ユーザーですか？</h4></li>
-                <span>
-                    <a href="/signin" class="btn back-black font-white" role="button" aria-pressed="true">ログイン</a>
-                    <a href="/signup" class="btn back-gray font-white" role="button" aria-pressed="true">新規登録</a>
-                </span>
-            <% end %>
-            </ul>
-        </nav>
-    </header>
-    <%= yield %>
-    <footer class="footer-distributed">
+	<header class="main-header" role="banner">
+		<div class="page-header" style="border: none;">
+			<a href="/"><img src="/img/logo.png" alt="logo.png" id="logo" width="50%" heigth="50%"></a>
+		</div>
+		<p class="pull-left header-lead font-white serif">あなたのための、読書記録（仮）</p>    
+		<nav class="navbar navbar-default">
+			<ul class="nav navbar-nav">
+			<% if !current_user.nil? %>
+				<li class="nav-spacing"></li>
+			<% else %>
+				<li class="font-white"><h4>新規ユーザーですか？</h4></li>
+				<span>
+					<a href="/signin" class="btn back-black font-white" role="button" aria-pressed="true">ログイン</a>
+					<a href="/signup" class="btn back-gray font-white" role="button" aria-pressed="true">新規登録</a>
+				</span>
+			<% end %>
+			</ul>
+		</nav>
+	</header>
+	<%= yield %>
+	<footer class="footer-distributed">
 		<div class="footer-right">
-		    <div class="footer-right-up">
+			<div class="footer-right-up">
+				<a class="hvr-grow" href="//twitter.com/manage_book" target="_blank"><i class="fa fa-twitter"></i></a>
+				<a class="hvr-grow" href="//github.com/coreshin" target="_blank"><i class="fa fa-github"></i></a>
+				<a class="hvr-grow" href="mailto:book.manager.kari@gmail.com"><i class="fa fa-envelope"></i></a>
 			</div>
-			<a class="hvr-grow" href="//twitter.com/manage_book" target="_blank"><i class="fa fa-twitter"></i></a>
-			<a class="hvr-grow" href="//github.com/coreshin" target="_blank"><i class="fa fa-github"></i></a>
-			<a class="hvr-grow" href="mailto:book.manager.kari@gmail.com"><i class="fa fa-envelope"></i></a>
 		</div>
 		<div class="footer-left">
 			<p class="footer-links">

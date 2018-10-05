@@ -7,189 +7,189 @@
 .back-blue{background-color: #0275d8;}
 .back-opacity{filter:alpha(opacity=50); opacity: 0.5;}
 .btn-outline-dark{
-    transition-property: background-color,color;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-    color: #343a40;
-    background-color: transparent;
-    background-image: none;
-    border-color: #343a40 !important;
+	transition-property: background-color,color;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+	color: #343a40;
+	background-color: transparent;
+	background-image: none;
+	border-color: #343a40 !important;
 }
 .btn-outline-dark:hover{
-    background-color: black;
-    color: white !important;
+	background-color: black;
+	color: white !important;
 }
 .serif{
-    font-family: serif;
+	font-family: serif;
 }
 .sans-serif{
-    font-family: sans-serif;
+	font-family: sans-serif;
 }
 .sentence{
-    color: black;
-    font-family: serif;
-    font-size: 18px;
+	color: black;
+	font-family: serif;
+	font-size: 18px;
 }
 .description {
-    font-family: sans-serif;
-    color: grey;
+	font-family: sans-serif;
+	color: grey;
 }
 .left-dash:before{
-    content: '\2014 \00A0';
+	content: '\2014 \00A0';
 }
 .icon{
-    border-radius: 50%;
-    border: 1px gray solid;
-    width: 60px;
+	border-radius: 50%;
+	border: 1px gray solid;
+	width: 60px;
 }
 .user-name{
-    color: black;
+	color: black;
 }
 
 body{
-    background-image: url(/img/dark-wood.jpg);
-    -webkit-font-smoothing: antialiased;
-    overflow-y: scroll;
+	background-image: url(/img/dark-wood.jpg);
+	-webkit-font-smoothing: antialiased;
+	overflow-y: scroll;
 }
 
 section.panel-default>header.header-grey, li.header-grey{
-    background-color: #494b4c; background-image: none; color: white;
+	background-color: #494b4c; background-image: none; color: white;
 }
 
 /*header*/
 header.main-header{
-    background: url(/img/library.jpg) no-repeat center;
-    background-size: cover;
-    border-bottom: #654747 solid 1px;
-    content: " ";
-    width: 100%;
-    display: table;
-    padding: 10px 30px 0px;
-    margin-bottom: 40px;
+	background: url(/img/library.jpg) no-repeat center;
+	background-size: cover;
+	border-bottom: #654747 solid 1px;
+	content: " ";
+	width: 100%;
+	display: table;
+	padding: 10px 30px 0px;
+	margin-bottom: 40px;
 }
 p.header-lead{
-    font-size: 2vw;
-    margin-left: 3em;
-    margin-top: -1em;
+	font-size: 2vw;
+	margin-left: 3em;
+	margin-top: -1em;
 }
 nav.navbar{
-    background:transparent;
-    border:none;
-    box-shadow: none;
+	background:transparent;
+	border:none;
+	box-shadow: none;
 }
 li.nav-spacing{
-    margin-top: 40px;
+	margin-top: 40px;
 }
 
 @media (max-width: 768px) {
 ul.nav{
-    padding-left: 10px;
-    display: flex;
+	padding-left: 10px;
+	display: flex;
 }
 p.header-lead{
-    font-size: 15px;
-    margin-left: 1em;
+	font-size: 15px;
+	margin-left: 1em;
 }
 }
 @media screen and (max-width: 480px) {#logo{ width: 80%;}}
 
 /*category_lists*/
 li.list-group-item{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 i.list-delete{
-    transition-property: opacity,color;
-    transition-duration: 0.35s;
-    transition-timing-function: ease-in-out;
-    opacity: 0.5;
-    font-size: 25px;
+	transition-property: opacity,color;
+	transition-duration: 0.35s;
+	transition-timing-function: ease-in-out;
+	opacity: 0.5;
+	font-size: 25px;
 }
 .list-delete:hover{
-    color: red;
-    opacity: 1;
+	color: red;
+	opacity: 1;
 }
 
 /*main_post*/
 .post{
-    border-bottom: 0.5px #D8D8D8 solid;
+	border-bottom: 0.5px #D8D8D8 solid;
 }
 .post-button{
-    position: absolute;
-    right: 30px;
-    width: 96px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    opacity: 0;
-    font-size: 20px;
+	position: absolute;
+	right: 30px;
+	width: 96px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	opacity: 0;
+	font-size: 20px;
 }
 .post:hover .post-button{
-    opacity: 1;
+	opacity: 1;
 }
 .book-delete, .book-edit{
-    transition-property: opacity,color;
-    transition-duration: 0.15s;
-    transition-timing-function: ease-in-out;
-    color: black;
-    opacity: 0.5;
-    font-size: 25px;
+	transition-property: opacity,color;
+	transition-duration: 0.15s;
+	transition-timing-function: ease-in-out;
+	color: black;
+	opacity: 0.5;
+	font-size: 25px;
 }
 .book-delete:hover{
-    color: red;
-    opacity: 1;
+	color: red;
+	opacity: 1;
 }
 .book-edit:hover{
-    color: black;
-    opacity: 1
+	color: black;
+	opacity: 1
 }
 .rate-star{
-    font-size: 20px;
-    color: rgba(0,0,0,0);
-    background-image: linear-gradient(270deg, #efc860 3%, #ffea86 57%);
-    -webkit-background-clip: text; 
+	font-size: 20px;
+	color: rgba(0,0,0,0);
+	background-image: linear-gradient(270deg, #efc860 3%, #ffea86 57%);
+	-webkit-background-clip: text; 
 }
 a.heart:hover{
-    text-decoration: none;
-    cursor: pointer;
+	text-decoration: none;
+	cursor: pointer;
 }
 .review{margin-left: 20px;}
 
 /*form*/
 div.form-group > div{margin:20px 0px;}
 textarea[name="comment"].comment, textarea[name="description"].user-description{
-    resize: none;
-    width: 100%;
-    height: 210px;
+	resize: none;
+	width: 100%;
+	height: 210px;
 }
 .book-rate{
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 .input-range[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background-color: #c7c7c7;
-  height: 2px;
-  width: 80%;
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: #c7c7c7;
+	height: 2px;
+	width: 80%;
 }
 .input-range[type="range"]:focus,
 .input-range[type="range"]:active {
-    outline: none;
+	outline: none;
 }
 .input-range[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    position: relative;
-    border: none;
-    width: 12px;
-    height: 12px;
-    display: block;
-    background-color: #262626;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
+	-webkit-appearance: none;
+	appearance: none;
+	cursor: pointer;
+	position: relative;
+	border: none;
+	width: 12px;
+	height: 12px;
+	display: block;
+	background-color: #262626;
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
 }
 select[name="year"].year{ width: 100%}
 select[name="month"].month{ width: 100%}
@@ -204,111 +204,111 @@ display: inline-block;
 }
 .img-canvas {display: inline-block;}
 .img-editor{
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 .img-editor div, .img-editor canvas{
-    margin: 5px;
-    align-self: center;
+	margin: 5px;
+	align-self: center;
 }
 .acMenu dt{
-    width: 100%;
-    display: inline-block;
-    padding: 0.3em 1em;
-    color: gray;
-    border: gray 1px solid;
-    border-radius: 6px;
-    cursor: pointer;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 90%;
-    font-weight: 100;
+	width: 100%;
+	display: inline-block;
+	padding: 0.3em 1em;
+	color: gray;
+	border: gray 1px solid;
+	border-radius: 6px;
+	cursor: pointer;
+	text-align: center;
+	font-family: sans-serif;
+	font-size: 90%;
+	font-weight: 100;
 }
 .acMenu dt:hover{
-    background: gray;
-    color: white;
-    transition: all .5s;
+	background: gray;
+	color: white;
+	transition: all .5s;
 }
 .acMenu dd{display:none;}
 
 @keyframes modalwindow_body_in {
-  0% {transform: translateY(-20px);}
-  100% {transform: translateY(0px);}
+	0% {transform: translateY(-20px);}
+	100% {transform: translateY(0px);}
 }
 @keyframes modalwindow_body_out {
-  0% {transform: translateY(0px);}
-  100% {transform: translateY(-20px);}
+	0% {transform: translateY(0px);}
+	100% {transform: translateY(-20px);}
 }
 
 .modalwindow {
-  /* オーバーレイ＆スクロール領域になるレイヤー */
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  overflow: auto;
-  z-index: 101;
-  width: 100%;
-  /* スマホでスワイプして指を離すまでの間下部の背景が無くなるため余分に指定 */
-  height: calc(100% + 100px);
-  background: rgba(0, 0, 0, 0.5);
-  border-bottom: 100px solid transparent;
-  cursor: pointer;
-  opacity: 1;
+	/* オーバーレイ＆スクロール領域になるレイヤー */
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: auto;
+	z-index: 101;
+	width: 100%;
+	/* スマホでスワイプして指を離すまでの間下部の背景が無くなるため余分に指定 */
+	height: calc(100% + 100px);
+	background: rgba(0, 0, 0, 0.5);
+	border-bottom: 100px solid transparent;
+	cursor: pointer;
+	opacity: 1;
 }
 
 .modalwindow .body {
-  /* ウィンドウ自体 アニメーションなどで装飾 */
-  position: relative;
-  left: 50%;
-  top: 0;
-  width: 600px;
-  margin-left: -300px;
-  margin-top: 40px;
-  margin-bottom: 10px;
-  cursor: default;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-  transform: translateY(-20px);
-  animation: 200ms modalwindow_body_out;
+	/* ウィンドウ自体 アニメーションなどで装飾 */
+	position: relative;
+	left: 50%;
+	top: 0;
+	width: 600px;
+	margin-left: -300px;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	cursor: default;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	transform: translateY(-20px);
+	animation: 200ms modalwindow_body_out;
 }
 .modalwindow.is_visible .body {
-  transform: translateY(0px);
-  animation: 400ms modalwindow_body_in;
+	transform: translateY(0px);
+	animation: 400ms modalwindow_body_in;
 }
 .modalwindow_header_close {
-  /* 右上に表示する×ボタン 面倒なので動的に追加してます */
-  position: absolute;
-  right: 0;
-  top: 5px;
-  background: none;
-  border: none;
-  cursor: pointer;
+	/* 右上に表示する×ボタン 面倒なので動的に追加してます */
+	position: absolute;
+	right: 0;
+	top: 5px;
+	background: none;
+	border: none;
+	cursor: pointer;
 }
 .modalwindow_header_close:before {
-  content: "\D7";
-  font-size: 24px;
-  font-family: serif;
-  color: #ccc;
+	content: "\D7";
+	font-size: 24px;
+	font-family: serif;
+	color: #ccc;
 }
 @media screen and (max-width: 900px) {
-  .modalwindow .body {
-    position: relative;
-    width: calc(100% - 20px);
-    margin: 10px;
-    left: 0;
-  }
+	.modalwindow .body {
+		position: relative;
+		width: calc(100% - 20px);
+		margin: 10px;
+		left: 0;
+	}
 }
 
 
 i.modal-close{
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    transition-property: opacity,color;
-    transition-duration: 0.35s;
-    transition-timing-function: ease-in-out;
-    font-size: 30px;
+	position: absolute;
+	top: -8px;
+	right: -8px;
+	transition-property: opacity,color;
+	transition-duration: 0.35s;
+	transition-timing-function: ease-in-out;
+	font-size: 30px;
 }
 .modal-close:hover{
-    color: white;
+	color: white;
 }
